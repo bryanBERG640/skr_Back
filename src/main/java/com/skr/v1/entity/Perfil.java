@@ -1,39 +1,43 @@
 package com.skr.v1.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="estatus_postulante")
-public class EstatusPostulante {
-
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "perfil")
+public class Perfil {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_estatus_postulante;
+	private int id_perfil;
 	private String descripcion;
 	private String usuario_actualiza;
-	private String fecha_actualizacion;
+	private Date fecha_actualizacion;
 	
-	public EstatusPostulante() {}
+	public Perfil() {}
 
-	public EstatusPostulante(int id_estatus_postulante, String descripcion, String usuario_actualiza,
-			String fecha_actualizacion) {
+	public Perfil(int id_perfil, String descripcion, String usuario_actualiza, Date fecha_actualizacion) {
 		super();
-		this.id_estatus_postulante = id_estatus_postulante;
+		this.id_perfil = id_perfil;
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public int getId_estatus_postulante() {
-		return id_estatus_postulante;
+	public int getId_perfil() {
+		return id_perfil;
 	}
 
-	public void setId_estatus_postulante(int id_estatus_postulante) {
-		this.id_estatus_postulante = id_estatus_postulante;
+	public void setId_perfil(int id_perfil) {
+		this.id_perfil = id_perfil;
 	}
 
 	public String getDescripcion() {
@@ -52,11 +56,11 @@ public class EstatusPostulante {
 		this.usuario_actualiza = usuario_actualiza;
 	}
 
-	public String getFecha_actualizacion() {
+	public Date getFecha_actualizacion() {
 		return fecha_actualizacion;
 	}
 
-	public void setFecha_actualizacion(String fecha_actualizacion) {
+	public void setFecha_actualizacion(Date fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
@@ -64,7 +68,7 @@ public class EstatusPostulante {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id_estatus_postulante;
+		result = prime * result + id_perfil;
 		return result;
 	}
 
@@ -76,16 +80,16 @@ public class EstatusPostulante {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EstatusPostulante other = (EstatusPostulante) obj;
-		if (id_estatus_postulante != other.id_estatus_postulante)
+		Perfil other = (Perfil) obj;
+		if (id_perfil != other.id_perfil)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "EstatusPostulante [id_estatus_postulante=" + id_estatus_postulante + ", descripcion=" + descripcion
-				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
+		return "Perfil [id_perfil=" + id_perfil + ", descripcion=" + descripcion + ", usuario_actualiza="
+				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
 	}
 
 }

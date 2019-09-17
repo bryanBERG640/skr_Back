@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skr.v1.entity.EstatusPostulante;
-import com.skr.v1.repository.RepositoryEstatusPostulante;
+import com.skr.v1.entity.Perfil;
+import com.skr.v1.repository.RepositoryPerfil;
 
 @RestController
-@RequestMapping("/estatusPostulante")
-public class ControllerEstatusPostulante {
+@RequestMapping("/perfil")
+public class ControllerPerfil {
 
-	private RepositoryEstatusPostulante repo;
+	private RepositoryPerfil repo;
 	
 	@Autowired
-	public ControllerEstatusPostulante(RepositoryEstatusPostulante repo) {
+	public ControllerPerfil(RepositoryPerfil repo){
 		this.repo = repo;
 	}
 	
 	@RequestMapping("/all")
-	public List<EstatusPostulante> estatusPostulanteList(){
+	public List<Perfil> perfilList(){
 		return repo.findAll();
 	}
 	
 	@RequestMapping("/add")
-	public @ResponseBody EstatusPostulante insert(@RequestBody EstatusPostulante agr) {
+	public @ResponseBody Perfil insert(@RequestBody Perfil agr) {
 		repo.save(agr);
 		return agr;
 	}
