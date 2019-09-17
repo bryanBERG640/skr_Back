@@ -9,27 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skr.v1.entity.EstatusCV;
-import com.skr.v1.repository.RepositoryEstatusCV;
-@RestController
-@RequestMapping("/estatuscv")
-public class ControllerEstatusCV {
+import com.skr.v1.entity.Cita;
+import com.skr.v1.repository.RepositoryCita;
 
-	private RepositoryEstatusCV repositoryEstatusCV;
+@RestController
+@RequestMapping("/cita")
+public class ControllerCita {
+	
+	private RepositoryCita repositoryCita;
 	
 	@Autowired
-	public ControllerEstatusCV(RepositoryEstatusCV repositoryEstatusCV) {
-		this.repositoryEstatusCV = repositoryEstatusCV;
+	public ControllerCita(RepositoryCita repositoryCita) {
+		this.repositoryCita = repositoryCita;
 	}
 	
 	@RequestMapping("/list")
-	public List<EstatusCV> estatusCVList(){
-		return repositoryEstatusCV.findAll();
+	public List<Cita> citaList(){
+		return repositoryCita.findAll();
 	}
 	
 	@PostMapping(path = "/post")
-	public @ResponseBody EstatusCV insert(@RequestBody EstatusCV agregar) {
-		repositoryEstatusCV.save(agregar);
+	public @ResponseBody Cita insert(@RequestBody Cita agregar) {
+		repositoryCita.save(agregar);
 		return agregar;
 	}
 }
