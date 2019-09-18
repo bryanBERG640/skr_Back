@@ -23,11 +23,11 @@ public class ControllerSexo {
 		this.repositorySexo = repositorySexo;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/all")
 	public List<Sexo> sexoList(){
 		return repositorySexo.findAll();
 	}
-	@PostMapping(path = "/post")
+	@PostMapping(path = "/add")
 	public @ResponseBody Sexo insert(@RequestBody Sexo agregar) {
 		repositorySexo.save(agregar);
 		return agregar;

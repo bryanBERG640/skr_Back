@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skr.v1.entity.EstatusAprobacion;
-import com.skr.v1.repository.RepositoryEstatusAprobacion;
+import com.skr.v1.entity.Seccion;
+import com.skr.v1.repository.RepositorySeccion;
 
 @RestController
-@RequestMapping("/aprobacion")
-public class ControllerEstatusAprobacion {
+@RequestMapping("/seccion")
+public class ControllerSeccion {
 	
-	private RepositoryEstatusAprobacion repoAprobacion;
-	
+	private RepositorySeccion repo;
+
 	@Autowired
-	public ControllerEstatusAprobacion(RepositoryEstatusAprobacion repoAprobacion) {
-		this.repoAprobacion = repoAprobacion;
+	public ControllerSeccion(RepositorySeccion repo) {
+		this.repo = repo;
 	}
 	
 	@RequestMapping("/all")
-	public List<EstatusAprobacion> aproList(){
-		return repoAprobacion.findAll();
+	public List<Seccion> seccionList(){
+		return repo.findAll();
 	}
 	
 	@PostMapping(path = "/add")
-	public @ResponseBody EstatusAprobacion insert(@RequestBody EstatusAprobacion agr) {
-		repoAprobacion.save(agr);
+	public @ResponseBody Seccion insert(@RequestBody Seccion agr) {
+		repo.save(agr);
 		return agr;
 	}
-
+	
 }
