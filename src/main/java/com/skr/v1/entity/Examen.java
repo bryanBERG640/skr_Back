@@ -31,9 +31,10 @@ public class Examen {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
-	@OneToMany(targetEntity = TipoExamen.class, mappedBy = "examen", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<TipoExamen> id_tipo_examen;
+	@ManyToOne
+	@JoinColumn(name="id_tipo_examen")
+	@JsonIgnore
+	private TipoExamen tipoexamen;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
@@ -52,8 +53,8 @@ public class Examen {
 	public Examen() {}
 
 	public Examen(int id_examen, String calificacion_global, String observaciones, String entrevistador,
-			String usuario_actualiza, String fecha_actualizacion, Set<TipoExamen> id_tipo_examen, Cliente cliente,
-			Cita cita, Set<Seccion> seccion) {
+			String usuario_actualiza, String fecha_actualizacion, TipoExamen tipoexamen, Cliente cliente, Cita cita,
+			Set<Seccion> seccion) {
 		super();
 		this.id_examen = id_examen;
 		this.calificacion_global = calificacion_global;
@@ -61,7 +62,7 @@ public class Examen {
 		this.entrevistador = entrevistador;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.id_tipo_examen = id_tipo_examen;
+		this.tipoexamen = tipoexamen;
 		this.cliente = cliente;
 		this.cita = cita;
 		this.seccion = seccion;
@@ -115,12 +116,12 @@ public class Examen {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<TipoExamen> getId_tipo_examen() {
-		return id_tipo_examen;
+	public TipoExamen getTipoexamen() {
+		return tipoexamen;
 	}
 
-	public void setId_tipo_examen(Set<TipoExamen> id_tipo_examen) {
-		this.id_tipo_examen = id_tipo_examen;
+	public void setTipoexamen(TipoExamen tipoexamen) {
+		this.tipoexamen = tipoexamen;
 	}
 
 	public Cliente getCliente() {
@@ -173,8 +174,9 @@ public class Examen {
 	public String toString() {
 		return "Examen [id_examen=" + id_examen + ", calificacion_global=" + calificacion_global + ", observaciones="
 				+ observaciones + ", entrevistador=" + entrevistador + ", usuario_actualiza=" + usuario_actualiza
-				+ ", fecha_actualizacion=" + fecha_actualizacion + ", id_tipo_examen=" + id_tipo_examen + ", cliente="
-				+ cliente + ", cita=" + cita + ", seccion=" + seccion + "]";
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", tipoexamen=" + tipoexamen + ", cliente=" + cliente
+				+ ", cita=" + cita + ", seccion=" + seccion + "]";
 	}
 
+	
 }
