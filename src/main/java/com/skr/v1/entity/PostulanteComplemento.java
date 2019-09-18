@@ -1,0 +1,262 @@
+package com.skr.v1.entity;
+
+import java.io.File;
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "postulante_c")
+public class PostulanteComplemento {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_postulante_c;
+	private Date fecha_nacimiento;
+	private int edad;
+	private String curp;
+	private String rfc;
+	private int pretencion_economica;
+	private String certificaciones;
+	private String tiempo_experiencia;
+	private int acuerdo_economico;
+	private File foto;
+	private String usuario_actualiza;
+	private Date fecha_actualizacion;
+	
+	
+	/*@OneToOne
+    @JoinColumn(name = "id_postulante")
+	private Postulante_b postulanteb;*/
+	
+	@ManyToOne
+    @JoinColumn(name = "id_escuela")
+	@JsonIgnore
+	private Escuela escuela;
+
+	@ManyToOne
+    @JoinColumn(name = "id_estatus_titulacion")
+	@JsonIgnore
+	private EstatusTitulacion estatustitulacion;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_carrera")
+	@JsonIgnore
+	private Carrera carrera;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_sexo")
+	@JsonIgnore
+	private Sexo sexo;
+
+	@ManyToOne
+    @JoinColumn(name = "id_estatus_cv")
+	@JsonIgnore
+	private EstatusCV estatuscv;
+
+	public PostulanteComplemento() {}
+
+	public PostulanteComplemento(int id_postulante_c, Date fecha_nacimiento, int edad, String curp, String rfc,
+			int pretencion_economica, String certificaciones, String tiempo_experiencia, int acuerdo_economico,
+			File foto, String usuario_actualiza, Date fecha_actualizacion,Escuela escuela, EstatusTitulacion estatustitulacion,
+			Carrera carrera, Sexo sexo, EstatusCV estatuscv) {
+		super();
+		this.id_postulante_c = id_postulante_c;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.edad = edad;
+		this.curp = curp;
+		this.rfc = rfc;
+		this.pretencion_economica = pretencion_economica;
+		this.certificaciones = certificaciones;
+		this.tiempo_experiencia = tiempo_experiencia;
+		this.acuerdo_economico = acuerdo_economico;
+		this.foto = foto;
+		this.usuario_actualiza = usuario_actualiza;
+		this.fecha_actualizacion = fecha_actualizacion;
+		this.escuela = escuela;
+		this.estatustitulacion = estatustitulacion;
+		this.carrera = carrera;
+		this.sexo = sexo;
+		this.estatuscv = estatuscv;
+	}
+
+	public int getId_postulante_c() {
+		return id_postulante_c;
+	}
+
+	public void setId_postulante_c(int id_postulante_c) {
+		this.id_postulante_c = id_postulante_c;
+	}
+
+	public Date getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getCurp() {
+		return curp;
+	}
+
+	public void setCurp(String curp) {
+		this.curp = curp;
+	}
+
+	public String getRfc() {
+		return rfc;
+	}
+
+	public void setRfc(String rfc) {
+		this.rfc = rfc;
+	}
+
+	public int getPretencion_economica() {
+		return pretencion_economica;
+	}
+
+	public void setPretencion_economica(int pretencion_economica) {
+		this.pretencion_economica = pretencion_economica;
+	}
+
+	public String getCertificaciones() {
+		return certificaciones;
+	}
+
+	public void setCertificaciones(String certificaciones) {
+		this.certificaciones = certificaciones;
+	}
+
+	public String getTiempo_experiencia() {
+		return tiempo_experiencia;
+	}
+
+	public void setTiempo_experiencia(String tiempo_experiencia) {
+		this.tiempo_experiencia = tiempo_experiencia;
+	}
+
+	public int getAcuerdo_economico() {
+		return acuerdo_economico;
+	}
+
+	public void setAcuerdo_economico(int acuerdo_economico) {
+		this.acuerdo_economico = acuerdo_economico;
+	}
+
+	public File getFoto() {
+		return foto;
+	}
+
+	public void setFoto(File foto) {
+		this.foto = foto;
+	}
+
+	public String getUsuario_actualiza() {
+		return usuario_actualiza;
+	}
+
+	public void setUsuario_actualiza(String usuario_actualiza) {
+		this.usuario_actualiza = usuario_actualiza;
+	}
+
+	public Date getFecha_actualizacion() {
+		return fecha_actualizacion;
+	}
+
+	public void setFecha_actualizacion(Date fecha_actualizacion) {
+		this.fecha_actualizacion = fecha_actualizacion;
+	}
+
+	public Escuela getEscuela() {
+		return escuela;
+	}
+
+	public void setEscuela(Escuela escuela) {
+		this.escuela = escuela;
+	}
+
+	public EstatusTitulacion getEstatustitulacion() {
+		return estatustitulacion;
+	}
+
+	public void setEstatustitulacion(EstatusTitulacion estatustitulacion) {
+		this.estatustitulacion = estatustitulacion;
+	}
+
+	public Carrera getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(Carrera carrera) {
+		this.carrera = carrera;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	public EstatusCV getEstatuscv() {
+		return estatuscv;
+	}
+
+	public void setEstatuscv(EstatusCV estatuscv) {
+		this.estatuscv = estatuscv;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id_postulante_c;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PostulanteComplemento other = (PostulanteComplemento) obj;
+		if (id_postulante_c != other.id_postulante_c)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "PostulanteComplemento [id_postulante_comp=" + id_postulante_c + ", fecha_nacimiento="
+				+ fecha_nacimiento + ", edad=" + edad + ", curp=" + curp + ", rfc=" + rfc + ", pretencion_economica="
+				+ pretencion_economica + ", certificaciones=" + certificaciones + ", tiempo_experiencia="
+				+ tiempo_experiencia + ", acuerdo_economico=" + acuerdo_economico + ", foto=" + foto
+				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
+				+ ", escuela=" + escuela + ", estatustitulacion="
+				+ estatustitulacion + ", carrera=" + carrera + ", sexo=" + sexo + ", estatuscv=" + estatuscv + "]";
+	}
+}
