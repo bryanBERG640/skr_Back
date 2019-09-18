@@ -26,7 +26,7 @@ public class PostulanteB {
 	private String apellido1;
 	private String apellido2;
 	private String celular;
-	private String telefono_fijo;
+	private String telefono;
 	private String correo;
 	private String observaciones;
 	private File cv;
