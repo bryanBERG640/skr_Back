@@ -3,6 +3,7 @@ package com.skr.v1.entity;
 import java.io.File;
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class PostulanteComplemento {
 	private String certificaciones;
 	private String tiempo_experiencia;
 	private int acuerdo_economico;
-	private File foto;
+	private File foto_perfil;
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
@@ -69,8 +70,8 @@ public class PostulanteComplemento {
 
 	public PostulanteComplemento(int id_postulante_c, Date fecha_nacimiento, int edad, String curp, String rfc,
 			int pretencion_economica, String certificaciones, String tiempo_experiencia, int acuerdo_economico,
-			File foto, String usuario_actualiza, Date fecha_actualizacion,Escuela escuela, EstatusTitulacion estatustitulacion,
-			Carrera carrera, Sexo sexo, EstatusCV estatuscv) {
+			File foto_perfil, String usuario_actualiza, Date fecha_actualizacion, Escuela escuela,
+			EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv) {
 		super();
 		this.id_postulante_c = id_postulante_c;
 		this.fecha_nacimiento = fecha_nacimiento;
@@ -81,7 +82,7 @@ public class PostulanteComplemento {
 		this.certificaciones = certificaciones;
 		this.tiempo_experiencia = tiempo_experiencia;
 		this.acuerdo_economico = acuerdo_economico;
-		this.foto = foto;
+		this.foto_perfil = foto_perfil;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.escuela = escuela;
@@ -163,12 +164,12 @@ public class PostulanteComplemento {
 		this.acuerdo_economico = acuerdo_economico;
 	}
 
-	public File getFoto() {
-		return foto;
+	public File getFoto_perfil() {
+		return foto_perfil;
 	}
 
-	public void setFoto(File foto) {
-		this.foto = foto;
+	public void setFoto_perfil(File foto_perfil) {
+		this.foto_perfil = foto_perfil;
 	}
 
 	public String getUsuario_actualiza() {
@@ -251,12 +252,12 @@ public class PostulanteComplemento {
 
 	@Override
 	public String toString() {
-		return "PostulanteComplemento [id_postulante_comp=" + id_postulante_c + ", fecha_nacimiento="
-				+ fecha_nacimiento + ", edad=" + edad + ", curp=" + curp + ", rfc=" + rfc + ", pretencion_economica="
+		return "PostulanteComplemento [id_postulante_c=" + id_postulante_c + ", fecha_nacimiento=" + fecha_nacimiento
+				+ ", edad=" + edad + ", curp=" + curp + ", rfc=" + rfc + ", pretencion_economica="
 				+ pretencion_economica + ", certificaciones=" + certificaciones + ", tiempo_experiencia="
-				+ tiempo_experiencia + ", acuerdo_economico=" + acuerdo_economico + ", foto=" + foto
+				+ tiempo_experiencia + ", acuerdo_economico=" + acuerdo_economico + ", foto_perfil=" + foto_perfil
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
-				+ ", escuela=" + escuela + ", estatustitulacion="
-				+ estatustitulacion + ", carrera=" + carrera + ", sexo=" + sexo + ", estatuscv=" + estatuscv + "]";
+				+ ", escuela=" + escuela + ", estatustitulacion=" + estatustitulacion + ", carrera=" + carrera
+				+ ", sexo=" + sexo + ", estatuscv=" + estatuscv + "]";
 	}
 }
