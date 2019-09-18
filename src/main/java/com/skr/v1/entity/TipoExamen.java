@@ -8,7 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -23,16 +27,22 @@ public class TipoExamen {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
+	@ManyToOne
+	@JoinColumn(name="id_examen")
+	@JsonIgnore
+	private Examen examen;
+	
 	public TipoExamen() {}
 
-	public TipoExamen(int id_tipo_examen, String examen_tipo, String decripcion, String usuario_actualiza,
-			Date fecha_actualizacion) {
+	public TipoExamen(int id_tipo_examen, String examen_tipo, String descripcion, String usuario_actualiza,
+			Date fecha_actualizacion, Examen examen) {
 		super();
 		this.id_tipo_examen = id_tipo_examen;
 		this.examen_tipo = examen_tipo;
-		this.descripcion = decripcion;
+		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.examen = examen;
 	}
 
 	public int getId_tipo_examen() {
@@ -75,6 +85,14 @@ public class TipoExamen {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
+	public Examen getExamen() {
+		return examen;
+	}
+
+	public void setExamen(Examen examen) {
+		this.examen = examen;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,7 +119,7 @@ public class TipoExamen {
 	public String toString() {
 		return "TipoExamen [id_tipo_examen=" + id_tipo_examen + ", examen_tipo=" + examen_tipo + ", descripcion="
 				+ descripcion + ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion="
-				+ fecha_actualizacion + "]";
+				+ fecha_actualizacion + ", examen=" + examen + "]";
 	}
 
 }

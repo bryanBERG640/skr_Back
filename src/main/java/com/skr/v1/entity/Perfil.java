@@ -8,7 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -22,14 +26,21 @@ public class Perfil {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
+	@ManyToOne
+	@JoinColumn(name="id_postulante_b")
+	@JsonIgnore
+	private PostulanteB postulanteb;
+	
 	public Perfil() {}
 
-	public Perfil(int id_perfil, String descripcion, String usuario_actualiza, Date fecha_actualizacion) {
+	public Perfil(int id_perfil, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
+			PostulanteB postulanteb) {
 		super();
 		this.id_perfil = id_perfil;
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.postulanteb = postulanteb;
 	}
 
 	public int getId_perfil() {
@@ -64,6 +75,14 @@ public class Perfil {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
+	public PostulanteB getPostulanteb() {
+		return postulanteb;
+	}
+
+	public void setPostulanteb(PostulanteB postulanteb) {
+		this.postulanteb = postulanteb;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,7 +108,7 @@ public class Perfil {
 	@Override
 	public String toString() {
 		return "Perfil [id_perfil=" + id_perfil + ", descripcion=" + descripcion + ", usuario_actualiza="
-				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
+				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulanteB="+postulanteb+"]";
 	}
 
 }
