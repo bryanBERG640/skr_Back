@@ -1,18 +1,18 @@
 package com.skr.v1.entity;
 
 import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -27,22 +27,21 @@ public class TipoExamen {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
-	@ManyToOne
-	@JoinColumn(name="id_examen")
-	@JsonIgnore
-	private Examen examen;
+	@OneToMany(targetEntity = TipoExamen.class, mappedBy = "tipoexamen", fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL)
+	private Set<Examen> id_examen;
 	
 	public TipoExamen() {}
 
 	public TipoExamen(int id_tipo_examen, String examen_tipo, String descripcion, String usuario_actualiza,
-			Date fecha_actualizacion, Examen examen) {
+			Date fecha_actualizacion, Set<Examen> id_examen) {
 		super();
 		this.id_tipo_examen = id_tipo_examen;
 		this.examen_tipo = examen_tipo;
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.examen = examen;
+		this.id_examen = id_examen;
 	}
 
 	public int getId_tipo_examen() {
@@ -65,8 +64,8 @@ public class TipoExamen {
 		return descripcion;
 	}
 
-	public void setDescripcion(String decripcion) {
-		this.descripcion = decripcion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public String getUsuario_actualiza() {
@@ -85,12 +84,12 @@ public class TipoExamen {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Examen getExamen() {
-		return examen;
+	public Set<Examen> getId_examen() {
+		return id_examen;
 	}
 
-	public void setExamen(Examen examen) {
-		this.examen = examen;
+	public void setId_examen(Set<Examen> id_examen) {
+		this.id_examen = id_examen;
 	}
 
 	@Override
@@ -119,7 +118,7 @@ public class TipoExamen {
 	public String toString() {
 		return "TipoExamen [id_tipo_examen=" + id_tipo_examen + ", examen_tipo=" + examen_tipo + ", descripcion="
 				+ descripcion + ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion="
-				+ fecha_actualizacion + ", examen=" + examen + "]";
+				+ fecha_actualizacion + ", id_examen=" + id_examen + "]";
 	}
-
+	
 }
