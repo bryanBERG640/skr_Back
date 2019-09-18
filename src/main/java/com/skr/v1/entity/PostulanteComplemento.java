@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -36,9 +37,9 @@ public class PostulanteComplemento {
 	private Date fecha_actualizacion;
 	
 	
-	/*@OneToOne
-    @JoinColumn(name = "id_postulante")
-	private Postulante_b postulanteb;*/
+	@OneToOne
+    @JoinColumn(name = "id_postulante_b")
+	private PostulanteB postulanteb;
 	
 	@ManyToOne
     @JoinColumn(name = "id_escuela")
@@ -69,8 +70,8 @@ public class PostulanteComplemento {
 
 	public PostulanteComplemento(int id_postulante_c, Date fecha_nacimiento, int edad, String curp, String rfc,
 			int pretencion_economica, String certificaciones, String tiempo_experiencia, int acuerdo_economico,
-			File foto_perfil, String usuario_actualiza, Date fecha_actualizacion, Escuela escuela,
-			EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv) {
+			File foto_perfil, String usuario_actualiza, Date fecha_actualizacion, PostulanteB postulanteb,
+			Escuela escuela, EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv) {
 		super();
 		this.id_postulante_c = id_postulante_c;
 		this.fecha_nacimiento = fecha_nacimiento;
@@ -84,6 +85,7 @@ public class PostulanteComplemento {
 		this.foto_perfil = foto_perfil;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.postulanteb = postulanteb;
 		this.escuela = escuela;
 		this.estatustitulacion = estatustitulacion;
 		this.carrera = carrera;
@@ -187,6 +189,14 @@ public class PostulanteComplemento {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
+	public PostulanteB getPostulanteb() {
+		return postulanteb;
+	}
+
+	public void setPostulanteb(PostulanteB postulanteb) {
+		this.postulanteb = postulanteb;
+	}
+
 	public Escuela getEscuela() {
 		return escuela;
 	}
@@ -256,7 +266,7 @@ public class PostulanteComplemento {
 				+ pretencion_economica + ", certificaciones=" + certificaciones + ", tiempo_experiencia="
 				+ tiempo_experiencia + ", acuerdo_economico=" + acuerdo_economico + ", foto_perfil=" + foto_perfil
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
-				+ ", escuela=" + escuela + ", estatustitulacion=" + estatustitulacion + ", carrera=" + carrera
-				+ ", sexo=" + sexo + ", estatuscv=" + estatuscv + "]";
+				+ ", postulanteb=" + postulanteb + ", escuela=" + escuela + ", estatustitulacion=" + estatustitulacion
+				+ ", carrera=" + carrera + ", sexo=" + sexo + ", estatuscv=" + estatuscv + "]";
 	}
 }

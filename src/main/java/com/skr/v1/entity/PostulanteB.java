@@ -14,6 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,11 +52,16 @@ public class PostulanteB {
 	@OneToMany(targetEntity = Cita.class, mappedBy = "postulanteb", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private Set<Cita> cita;	
 	
+	@OneToOne(mappedBy = "postulanteb", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private PostulanteComplemento postulanteComplemento;
+	
 	public PostulanteB() {}
 
 	public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
 			String telefono, String correo, String observaciones, File cv, String usuario_actualiza,
-			String fecha_actualizacion, EstatusPostulante estatuspostulante, Perfil perfil, Set<Cita> cita) {
+			String fecha_actualizacion, EstatusPostulante estatuspostulante, Perfil perfil, Set<Cita> cita,
+			PostulanteComplemento postulanteComplemento) {
 		super();
 		this.id_postulante_b = id_postulante_b;
 		this.nombre = nombre;
@@ -71,6 +77,7 @@ public class PostulanteB {
 		this.estatuspostulante = estatuspostulante;
 		this.perfil = perfil;
 		this.cita = cita;
+		this.postulanteComplemento = postulanteComplemento;
 	}
 
 	public int getId_postulante_b() {
@@ -185,6 +192,14 @@ public class PostulanteB {
 		this.cita = cita;
 	}
 
+	public PostulanteComplemento getPostulanteComplemento() {
+		return postulanteComplemento;
+	}
+
+	public void setPostulanteComplemento(PostulanteComplemento postulanteComplemento) {
+		this.postulanteComplemento = postulanteComplemento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -213,6 +228,6 @@ public class PostulanteB {
 				+ ", apellido2=" + apellido2 + ", celular=" + celular + ", telefono=" + telefono + ", correo=" + correo
 				+ ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza=" + usuario_actualiza
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuspostulante=" + estatuspostulante
-				+ ", perfil=" + perfil + ", cita=" + cita + "]";
+				+ ", perfil=" + perfil + ", cita=" + cita + ", postulanteComplemento=" + postulanteComplemento + "]";
 	}
 }
