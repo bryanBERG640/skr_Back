@@ -35,9 +35,10 @@ public class Examen {
 			cascade = CascadeType.ALL)
 	private Set<TipoExamen> id_tipo_examen;
 	
-	@OneToMany(targetEntity = Cliente.class, mappedBy = "examen", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Cliente> id_cliente;
+	@ManyToOne
+	@JoinColumn(name = "id_cliente")
+	@JsonIgnore
+	private Cliente cliente;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cita")
@@ -51,8 +52,8 @@ public class Examen {
 	public Examen() {}
 
 	public Examen(int id_examen, String calificacion_global, String observaciones, String entrevistador,
-			String usuario_actualiza, String fecha_actualizacion, Set<TipoExamen> id_tipo_examen,
-			Set<Cliente> id_cliente, Cita cita, Set<Seccion> seccion) {
+			String usuario_actualiza, String fecha_actualizacion, Set<TipoExamen> id_tipo_examen, Cliente cliente,
+			Cita cita, Set<Seccion> seccion) {
 		super();
 		this.id_examen = id_examen;
 		this.calificacion_global = calificacion_global;
@@ -61,7 +62,7 @@ public class Examen {
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.id_tipo_examen = id_tipo_examen;
-		this.id_cliente = id_cliente;
+		this.cliente = cliente;
 		this.cita = cita;
 		this.seccion = seccion;
 	}
@@ -122,12 +123,12 @@ public class Examen {
 		this.id_tipo_examen = id_tipo_examen;
 	}
 
-	public Set<Cliente> getId_cliente() {
-		return id_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setId_cliente(Set<Cliente> id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Cita getCita() {
@@ -172,7 +173,8 @@ public class Examen {
 	public String toString() {
 		return "Examen [id_examen=" + id_examen + ", calificacion_global=" + calificacion_global + ", observaciones="
 				+ observaciones + ", entrevistador=" + entrevistador + ", usuario_actualiza=" + usuario_actualiza
-				+ ", fecha_actualizacion=" + fecha_actualizacion + ", id_tipo_examen=" + id_tipo_examen
-				+ ", id_cliente=" + id_cliente + ", cita=" + cita + ", seccion=" + seccion + "]";
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", id_tipo_examen=" + id_tipo_examen + ", cliente="
+				+ cliente + ", cita=" + cita + ", seccion=" + seccion + "]";
 	}
+
 }
