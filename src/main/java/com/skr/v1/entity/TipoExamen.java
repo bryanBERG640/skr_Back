@@ -27,9 +27,9 @@ public class TipoExamen {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
-	@OneToMany(targetEntity = TipoExamen.class, mappedBy = "tipoexamen", fetch = FetchType.LAZY,
+	@OneToMany(targetEntity = Examen.class, mappedBy = "tipoexamen", fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
-	private Set<Examen> id_examen;
+	private Set<Examen> examen;
 	
 	public TipoExamen() {}
 
@@ -41,7 +41,7 @@ public class TipoExamen {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.id_examen = id_examen;
+		this.examen = id_examen;
 	}
 
 	public int getId_tipo_examen() {
@@ -85,11 +85,11 @@ public class TipoExamen {
 	}
 
 	public Set<Examen> getId_examen() {
-		return id_examen;
+		return examen;
 	}
 
 	public void setId_examen(Set<Examen> id_examen) {
-		this.id_examen = id_examen;
+		this.examen = id_examen;
 	}
 
 	@Override
@@ -118,7 +118,7 @@ public class TipoExamen {
 	public String toString() {
 		return "TipoExamen [id_tipo_examen=" + id_tipo_examen + ", examen_tipo=" + examen_tipo + ", descripcion="
 				+ descripcion + ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion="
-				+ fecha_actualizacion + ", id_examen=" + id_examen + "]";
+				+ fecha_actualizacion + ", id_examen=" + examen + "]";
 	}
 	
 }
