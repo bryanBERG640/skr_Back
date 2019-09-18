@@ -10,8 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -34,12 +38,17 @@ public class Examen {
 	@OneToMany(targetEntity = Cliente.class, mappedBy = "examen", fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
 	private Set<Cliente> id_cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_cita")
+	@JsonIgnore
+	private Cita cita;
 
 	public Examen() {}
 
 	public Examen(int id_examen, String calificacion_global, String observaciones, String entrevistador,
 			String usuario_actualiza, String fecha_actualizacion, Set<TipoExamen> id_tipo_examen,
-			Set<Cliente> id_cliente) {
+			Set<Cliente> id_cliente, Cita cita) {
 		super();
 		this.id_examen = id_examen;
 		this.calificacion_global = calificacion_global;
@@ -49,6 +58,7 @@ public class Examen {
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.id_tipo_examen = id_tipo_examen;
 		this.id_cliente = id_cliente;
+		this.cita = cita;
 	}
 
 	public int getId_examen() {
@@ -115,6 +125,14 @@ public class Examen {
 		this.id_cliente = id_cliente;
 	}
 
+	public Cita getCita() {
+		return cita;
+	}
+
+	public void setCita(Cita cita) {
+		this.cita = cita;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -142,7 +160,6 @@ public class Examen {
 		return "Examen [id_examen=" + id_examen + ", calificacion_global=" + calificacion_global + ", observaciones="
 				+ observaciones + ", entrevistador=" + entrevistador + ", usuario_actualiza=" + usuario_actualiza
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", id_tipo_examen=" + id_tipo_examen
-				+ ", id_cliente=" + id_cliente + "]";
+				+ ", id_cliente=" + id_cliente + ", cita=" + cita + "]";
 	}
-	
 }

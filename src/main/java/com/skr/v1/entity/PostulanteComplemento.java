@@ -3,7 +3,6 @@ package com.skr.v1.entity;
 import java.io.File;
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

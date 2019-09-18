@@ -41,13 +41,17 @@ public class PostulanteB {
 			cascade = CascadeType.ALL)
 	private Set<Perfil> id_perfil;
 	
+	@OneToMany(targetEntity = Cita.class, mappedBy = "postulanteb", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private Set<Cita> cita;	
+	
 	public PostulanteB() {}
 
-	public PostulanteB(int id_postulante, String nombre, String apellido1, String apellido2, String celular,
+	public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
 			String telefono_fijo, String correo, String observaciones, File cv, String usuario_actualiza,
-			String fecha_actualizacion, Set<EstatusPostulante> id_estatus_postulante, Set<Perfil> id_perfil) {
+			String fecha_actualizacion, Set<EstatusPostulante> id_estatus_postulante, Set<Perfil> id_perfil,
+			Set<Cita> cita) {
 		super();
-		this.id_postulante_b = id_postulante;
+		this.id_postulante_b = id_postulante_b;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
@@ -60,14 +64,15 @@ public class PostulanteB {
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.id_estatus_postulante = id_estatus_postulante;
 		this.id_perfil = id_perfil;
+		this.cita = cita;
 	}
 
-	public int getId_postulante() {
+	public int getId_postulante_b() {
 		return id_postulante_b;
 	}
 
-	public void setId_postulante(int id_postulante) {
-		this.id_postulante_b = id_postulante;
+	public void setId_postulante_b(int id_postulante_b) {
+		this.id_postulante_b = id_postulante_b;
 	}
 
 	public String getNombre() {
@@ -165,7 +170,15 @@ public class PostulanteB {
 	public void setId_perfil(Set<Perfil> id_perfil) {
 		this.id_perfil = id_perfil;
 	}
-	
+
+	public Set<Cita> getCita() {
+		return cita;
+	}
+
+	public void setCita(Set<Cita> cita) {
+		this.cita = cita;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -194,7 +207,6 @@ public class PostulanteB {
 				+ ", apellido2=" + apellido2 + ", celular=" + celular + ", telefono_fijo=" + telefono_fijo + ", correo="
 				+ correo + ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza="
 				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", id_estatus_postulante="
-				+ id_estatus_postulante + ", id_perfil=" + id_perfil + "]";
+				+ id_estatus_postulante + ", id_perfil=" + id_perfil + ", cita=" + cita + "]";
 	}
-	
 }
