@@ -1,11 +1,16 @@
 package com.skr.v1.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -21,14 +26,19 @@ public class EstatusCV {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
+	@OneToMany(targetEntity = PostulanteComplemento.class, mappedBy = "estatuscv", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private Set<PostulanteComplemento> postulantecomplemento;
+	
 	public EstatusCV() {}
 
-	public EstatusCV(int id_estatus_cv, String descripcion, String usuario_actualiza, String fecha_actualizacion) {
+	public EstatusCV(int id_estatus_cv, String descripcion, String usuario_actualiza, String fecha_actualizacion,
+			Set<PostulanteComplemento> postulantecomplemento) {
 		super();
 		this.id_estatus_cv = id_estatus_cv;
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.postulantecomplemento = postulantecomplemento;
 	}
 
 	public int getId_estatus_cv() {
@@ -62,6 +72,15 @@ public class EstatusCV {
 	public void setFecha_actualizacion(String fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
+
+	public Set<PostulanteComplemento> getPostulantecomplemento() {
+		return postulantecomplemento;
+	}
+
+	public void setPostulantecomplemento(Set<PostulanteComplemento> postulantecomplemento) {
+		this.postulantecomplemento = postulantecomplemento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,6 +107,6 @@ public class EstatusCV {
 	public String toString() {
 		return "EstatusCV [id_estatus_cv=" + id_estatus_cv + ", descripcion=" + descripcion + ", usuario_actualiza="
 				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento="
-				+ "]";
+				+ postulantecomplemento + "]";
 	}
 }

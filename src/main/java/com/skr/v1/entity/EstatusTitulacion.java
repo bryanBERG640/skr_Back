@@ -1,11 +1,16 @@
 package com.skr.v1.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -21,16 +26,19 @@ public class EstatusTitulacion {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
+	@OneToMany(targetEntity = PostulanteComplemento.class, mappedBy = "estatustitulacion", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private Set<PostulanteComplemento> postulantecomplemento;
 	
 	public EstatusTitulacion() {}
 
 	public EstatusTitulacion(int id_estatus_titulacion, String descripcion, String usuario_actualiza,
-			String fecha_actualizacion) {
+			String fecha_actualizacion, Set<PostulanteComplemento> postulantecomplemento) {
 		super();
 		this.id_estatus_titulacion = id_estatus_titulacion;
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.postulantecomplemento = postulantecomplemento;
 	}
 
 	public int getId_estatus_titulacion() {
@@ -65,6 +73,14 @@ public class EstatusTitulacion {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
+	public Set<PostulanteComplemento> getPostulantecomplemento() {
+		return postulantecomplemento;
+	}
+
+	public void setPostulantecomplemento(Set<PostulanteComplemento> postulantecomplemento) {
+		this.postulantecomplemento = postulantecomplemento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +107,6 @@ public class EstatusTitulacion {
 	public String toString() {
 		return "EstatusTitulacion [id_estatus_titulacion=" + id_estatus_titulacion + ", descripcion=" + descripcion
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
-				+ ", postulantecomplemento=" +"]";
+				+ ", postulantecomplemento=" + postulantecomplemento + "]";
 	}
 }
