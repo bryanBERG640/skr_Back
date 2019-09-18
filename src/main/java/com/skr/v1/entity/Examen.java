@@ -43,12 +43,16 @@ public class Examen {
 	@JoinColumn(name = "id_cita")
 	@JsonIgnore
 	private Cita cita;
+	
+	@OneToMany(targetEntity = Seccion.class, mappedBy = "examen", fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL)
+	private Set<Seccion> seccion;
 
 	public Examen() {}
 
 	public Examen(int id_examen, String calificacion_global, String observaciones, String entrevistador,
 			String usuario_actualiza, String fecha_actualizacion, Set<TipoExamen> id_tipo_examen,
-			Set<Cliente> id_cliente, Cita cita) {
+			Set<Cliente> id_cliente, Cita cita, Set<Seccion> seccion) {
 		super();
 		this.id_examen = id_examen;
 		this.calificacion_global = calificacion_global;
@@ -59,6 +63,7 @@ public class Examen {
 		this.id_tipo_examen = id_tipo_examen;
 		this.id_cliente = id_cliente;
 		this.cita = cita;
+		this.seccion = seccion;
 	}
 
 	public int getId_examen() {
@@ -133,6 +138,14 @@ public class Examen {
 		this.cita = cita;
 	}
 
+	public Set<Seccion> getSeccion() {
+		return seccion;
+	}
+
+	public void setSeccion(Set<Seccion> seccion) {
+		this.seccion = seccion;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -160,6 +173,6 @@ public class Examen {
 		return "Examen [id_examen=" + id_examen + ", calificacion_global=" + calificacion_global + ", observaciones="
 				+ observaciones + ", entrevistador=" + entrevistador + ", usuario_actualiza=" + usuario_actualiza
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", id_tipo_examen=" + id_tipo_examen
-				+ ", id_cliente=" + id_cliente + ", cita=" + cita + "]";
+				+ ", id_cliente=" + id_cliente + ", cita=" + cita + ", seccion=" + seccion + "]";
 	}
 }
