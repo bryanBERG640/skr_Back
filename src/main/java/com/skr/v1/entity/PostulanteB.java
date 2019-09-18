@@ -56,7 +56,7 @@ public class PostulanteB {
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.celular = celular;
-		this.telefono_fijo = telefono_fijo;
+		this.telefono = telefono_fijo;
 		this.correo = correo;
 		this.observaciones = observaciones;
 		this.cv = cv;
@@ -107,12 +107,12 @@ public class PostulanteB {
 		this.celular = celular;
 	}
 
-	public String getTelefono_fijo() {
-		return telefono_fijo;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setTelefono_fijo(String telefono_fijo) {
-		this.telefono_fijo = telefono_fijo;
+	public void setTelefono(String telefono_fijo) {
+		this.telefono = telefono_fijo;
 	}
 
 	public String getCorreo() {
@@ -204,7 +204,7 @@ public class PostulanteB {
 	@Override
 	public String toString() {
 		return "PostulanteB [id_postulante_b=" + id_postulante_b + ", nombre=" + nombre + ", apellido1=" + apellido1
-				+ ", apellido2=" + apellido2 + ", celular=" + celular + ", telefono_fijo=" + telefono_fijo + ", correo="
+				+ ", apellido2=" + apellido2 + ", celular=" + celular + ", telefono=" + telefono + ", correo="
 				+ correo + ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza="
 				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", id_estatus_postulante="
 				+ id_estatus_postulante + ", id_perfil=" + id_perfil + ", cita=" + cita + "]";
