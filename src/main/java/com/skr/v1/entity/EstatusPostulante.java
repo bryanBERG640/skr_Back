@@ -1,14 +1,15 @@
 package com.skr.v1.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="estatus_postulante")
@@ -21,15 +22,13 @@ public class EstatusPostulante {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
-	@ManyToOne
-	@JoinColumn(name="id_postulante_b")
-	@JsonIgnore
-	private PostulanteB postulanteb;
+	@OneToMany(targetEntity = PostulanteB.class, mappedBy = "estatuspostulante", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private Set<PostulanteB> postulanteb;	
 	
 	public EstatusPostulante() {}
 
 	public EstatusPostulante(int id_estatus_postulante, String descripcion, String usuario_actualiza,
-			String fecha_actualizacion, PostulanteB postulanteb) {
+			String fecha_actualizacion, Set<PostulanteB> postulanteb) {
 		super();
 		this.id_estatus_postulante = id_estatus_postulante;
 		this.descripcion = descripcion;
@@ -70,11 +69,11 @@ public class EstatusPostulante {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public PostulanteB getPostulanteb() {
+	public Set<PostulanteB> getPostulanteb() {
 		return postulanteb;
 	}
 
-	public void setPostulanteb(PostulanteB postulanteb) {
+	public void setPostulanteb(Set<PostulanteB> postulanteb) {
 		this.postulanteb = postulanteb;
 	}
 
@@ -103,7 +102,7 @@ public class EstatusPostulante {
 	@Override
 	public String toString() {
 		return "EstatusPostulante [id_estatus_postulante=" + id_estatus_postulante + ", descripcion=" + descripcion
-				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulanteB="+postulanteb+"]";
+				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
+				+ ", postulanteb=" + postulanteb + "]";
 	}
-
 }

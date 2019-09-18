@@ -11,8 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
@@ -33,13 +37,16 @@ public class PostulanteB {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
-	@OneToMany(targetEntity = EstatusPostulante.class, mappedBy = "postulanteb", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<EstatusPostulante> id_estatus_postulante;
 	
-	@OneToMany(targetEntity = Perfil.class, mappedBy = "postulanteb", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Perfil> id_perfil;
+	@ManyToOne
+	@JoinColumn(name="id_estatus_postulante")
+	@JsonIgnore
+	private EstatusPostulante estatuspostulante;
+	
+	@ManyToOne
+	@JoinColumn(name="id_perfil")
+	@JsonIgnore
+	private Perfil perfil;
 	
 	@OneToMany(targetEntity = Cita.class, mappedBy = "postulanteb", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private Set<Cita> cita;	
@@ -47,23 +54,22 @@ public class PostulanteB {
 	public PostulanteB() {}
 
 	public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
-			String telefono_fijo, String correo, String observaciones, File cv, String usuario_actualiza,
-			String fecha_actualizacion, Set<EstatusPostulante> id_estatus_postulante, Set<Perfil> id_perfil,
-			Set<Cita> cita) {
+			String telefono, String correo, String observaciones, File cv, String usuario_actualiza,
+			String fecha_actualizacion, EstatusPostulante estatuspostulante, Perfil perfil, Set<Cita> cita) {
 		super();
 		this.id_postulante_b = id_postulante_b;
 		this.nombre = nombre;
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.celular = celular;
-		this.telefono = telefono_fijo;
+		this.telefono = telefono;
 		this.correo = correo;
 		this.observaciones = observaciones;
 		this.cv = cv;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.id_estatus_postulante = id_estatus_postulante;
-		this.id_perfil = id_perfil;
+		this.estatuspostulante = estatuspostulante;
+		this.perfil = perfil;
 		this.cita = cita;
 	}
 
@@ -111,8 +117,8 @@ public class PostulanteB {
 		return telefono;
 	}
 
-	public void setTelefono(String telefono_fijo) {
-		this.telefono = telefono_fijo;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	public String getCorreo() {
@@ -155,20 +161,20 @@ public class PostulanteB {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<EstatusPostulante> getId_estatus_postulante() {
-		return id_estatus_postulante;
+	public EstatusPostulante getEstatuspostulante() {
+		return estatuspostulante;
 	}
 
-	public void setId_estatus_postulante(Set<EstatusPostulante> id_estatus_postulante) {
-		this.id_estatus_postulante = id_estatus_postulante;
+	public void setEstatuspostulante(EstatusPostulante estatuspostulante) {
+		this.estatuspostulante = estatuspostulante;
 	}
 
-	public Set<Perfil> getId_perfil() {
-		return id_perfil;
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
-	public void setId_perfil(Set<Perfil> id_perfil) {
-		this.id_perfil = id_perfil;
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	public Set<Cita> getCita() {
@@ -204,9 +210,9 @@ public class PostulanteB {
 	@Override
 	public String toString() {
 		return "PostulanteB [id_postulante_b=" + id_postulante_b + ", nombre=" + nombre + ", apellido1=" + apellido1
-				+ ", apellido2=" + apellido2 + ", celular=" + celular + ", telefono=" + telefono + ", correo="
-				+ correo + ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza="
-				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", id_estatus_postulante="
-				+ id_estatus_postulante + ", id_perfil=" + id_perfil + ", cita=" + cita + "]";
+				+ ", apellido2=" + apellido2 + ", celular=" + celular + ", telefono=" + telefono + ", correo=" + correo
+				+ ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza=" + usuario_actualiza
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuspostulante=" + estatuspostulante
+				+ ", perfil=" + perfil + ", cita=" + cita + "]";
 	}
 }

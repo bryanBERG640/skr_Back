@@ -1,18 +1,18 @@
 package com.skr.v1.entity;
 
 import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -26,15 +26,13 @@ public class Perfil {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
-	@ManyToOne
-	@JoinColumn(name="id_postulante_b")
-	@JsonIgnore
-	private PostulanteB postulanteb;
+	@OneToMany(targetEntity = PostulanteB.class, mappedBy = "perfil", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private Set<PostulanteB> postulanteb;	
 	
 	public Perfil() {}
 
 	public Perfil(int id_perfil, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
-			PostulanteB postulanteb) {
+			Set<PostulanteB> postulanteb) {
 		super();
 		this.id_perfil = id_perfil;
 		this.descripcion = descripcion;
@@ -75,11 +73,11 @@ public class Perfil {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public PostulanteB getPostulanteb() {
+	public Set<PostulanteB> getPostulanteb() {
 		return postulanteb;
 	}
 
-	public void setPostulanteb(PostulanteB postulanteb) {
+	public void setPostulanteb(Set<PostulanteB> postulanteb) {
 		this.postulanteb = postulanteb;
 	}
 
@@ -108,7 +106,7 @@ public class Perfil {
 	@Override
 	public String toString() {
 		return "Perfil [id_perfil=" + id_perfil + ", descripcion=" + descripcion + ", usuario_actualiza="
-				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulanteB="+postulanteb+"]";
+				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulanteb=" + postulanteb
+				+ "]";
 	}
-
 }
