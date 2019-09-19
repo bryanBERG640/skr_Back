@@ -13,7 +13,7 @@ import com.skr.v1.entity.EstatusAprobacion;
 import com.skr.v1.repository.RepositoryEstatusAprobacion;
 
 @RestController
-@RequestMapping("/aprobacion")
+@RequestMapping("/estatusAprobacion")
 public class ControllerEstatusAprobacion {
 	
 	private RepositoryEstatusAprobacion repoAprobacion;
@@ -23,12 +23,12 @@ public class ControllerEstatusAprobacion {
 		this.repoAprobacion = repoAprobacion;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<EstatusAprobacion> aproList(){
 		return repoAprobacion.findAll();
 	}
 	
-	@PostMapping(path = "/add")
+	@PostMapping(path = "/post")
 	public @ResponseBody EstatusAprobacion insert(@RequestBody EstatusAprobacion agr) {
 		repoAprobacion.save(agr);
 		return agr;

@@ -14,7 +14,7 @@ import com.skr.v1.repository.RepositoryExamen;
 
 
 @RestController
-@RequestMapping("/Examen")
+@RequestMapping("/examen")
 public class ControllerExamen {
 
 	private RepositoryExamen repositoryExamen;
@@ -25,7 +25,7 @@ public class ControllerExamen {
 		this.repositoryExamen=repositoryExamen;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<Examen> examenList()
 	{
 		return repositoryExamen.findAll();

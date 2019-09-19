@@ -19,10 +19,9 @@ public class PostulanteBImpl implements PostulanteBService{
 		this.repositoryPostulanteB=repositoryPostulanteB;
 	}
 	
-	@Autowired
+	@Override
 	public List<PostulanteB> postulantebList()
 	{
 		return repositoryPostulanteB.findAll();
 	}
-
 }

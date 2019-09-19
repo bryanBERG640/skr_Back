@@ -220,7 +220,7 @@ public class PostulanteB {
 		if (id_postulante_b != other.id_postulante_b)
 			return false;
 		return true;
-	}
+	} 
 
 	@Override
 	public String toString() {

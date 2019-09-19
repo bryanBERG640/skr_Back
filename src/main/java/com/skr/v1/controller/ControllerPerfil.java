@@ -22,12 +22,12 @@ public class ControllerPerfil {
 		this.repo = repo;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<Perfil> perfilList(){
 		return repo.findAll();
 	}
 	
-	@RequestMapping("/add")
+	@RequestMapping("/post")
 	public @ResponseBody Perfil insert(@RequestBody Perfil agr) {
 		repo.save(agr);
 		return agr;

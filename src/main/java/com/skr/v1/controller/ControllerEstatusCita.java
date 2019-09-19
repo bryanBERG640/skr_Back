@@ -13,7 +13,7 @@ import com.skr.v1.entity.EstatusCita;
 import com.skr.v1.repository.RepositoryEstatusCita;
 
 @RestController
-@RequestMapping("/estatuscita")
+@RequestMapping("/estatusCita")
 public class ControllerEstatusCita {
 
 	private RepositoryEstatusCita repositoryEstatusCita;
@@ -23,7 +23,7 @@ public class ControllerEstatusCita {
 		this.repositoryEstatusCita = repositoryEstatusCita;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<EstatusCita> estatusCitaList(){
 		return repositoryEstatusCita.findAll();
 	}

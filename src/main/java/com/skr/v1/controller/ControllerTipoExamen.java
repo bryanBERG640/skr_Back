@@ -22,12 +22,12 @@ public class ControllerTipoExamen {
 		this.repoTipoExamen = repoTipoExamen;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<TipoExamen> tipoExamenList() {
 		return repoTipoExamen.findAll();
 	}
 	
-	@RequestMapping("/add")
+	@RequestMapping("/post")
 	public @ResponseBody TipoExamen insert(@RequestBody TipoExamen agr) {
 		repoTipoExamen.save(agr);
 		return agr;

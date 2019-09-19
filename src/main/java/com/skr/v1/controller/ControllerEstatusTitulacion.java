@@ -13,7 +13,7 @@ import com.skr.v1.entity.EstatusTitulacion;
 import com.skr.v1.repository.RepositoryEstatusTitulacion;
 
 @RestController
-@RequestMapping("/estatustitulacion")
+@RequestMapping("/estatusTitulacion")
 public class ControllerEstatusTitulacion {
 	
 	private RepositoryEstatusTitulacion repositoryEstatusTitulacion;
@@ -23,7 +23,7 @@ public class ControllerEstatusTitulacion {
 		this.repositoryEstatusTitulacion = repositoryEstatusTitulacion;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<EstatusTitulacion> estatusTitulacionList(){
 		return repositoryEstatusTitulacion.findAll();
 	}

@@ -23,7 +23,7 @@ private RepositoryCarrera repositoryCarrera;
 		this.repositoryCarrera = repositoryCarrera;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<Carrera> carreraList(){
 		return repositoryCarrera.findAll();
 	}

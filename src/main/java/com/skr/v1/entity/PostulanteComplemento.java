@@ -257,7 +257,7 @@ public class PostulanteComplemento {
 		if (id_postulante_c != other.id_postulante_c)
 			return false;
 		return true;
-	}
+	} 
 
 	@Override
 	public String toString() {

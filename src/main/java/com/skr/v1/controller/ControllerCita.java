@@ -23,7 +23,7 @@ public class ControllerCita {
 		this.repositoryCita = repositoryCita;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<Cita> citaList(){
 		return repositoryCita.findAll();
 	}

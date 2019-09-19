@@ -23,12 +23,12 @@ public class ControllerCliente {
 		this.repoCliente = repoCliente;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<Cliente> clientesList() {
 		return repoCliente.findAll();
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/post")
 	public @ResponseBody Cliente insert(@RequestBody Cliente agr) {
 		repoCliente.save(agr);
 		return agr;

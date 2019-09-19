@@ -24,7 +24,7 @@ public class ControllerEscuela {
 		this.repositoryEscuela = repositoryEscuela;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<Escuela> escuelaList(){
 		return repositoryEscuela.findAll();
 	}

@@ -22,12 +22,12 @@ public class ControllerTipoEntrevista {
 		this.repo = repo;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<TipoEntrevista> tipoEntrevistaList(){
 		return repo.findAll();
 	}
 	
-	@RequestMapping("/add")
+	@RequestMapping("/post")
 	public @ResponseBody TipoEntrevista insert(@RequestBody TipoEntrevista agr) {
 		repo.save(agr);
 		return agr;

@@ -13,7 +13,7 @@ import com.skr.v1.entity.PostulanteComplemento;
 import com.skr.v1.repository.RepositoryPostulanteComplemento;
 
 @RestController
-@RequestMapping("/postulantecomplemento")
+@RequestMapping("/postulanteComplemento")
 public class ControllerPostulanteComplemento {
 
 	private RepositoryPostulanteComplemento repositoryPostulanteComplemento;
@@ -23,7 +23,7 @@ public class ControllerPostulanteComplemento {
 		this.repositoryPostulanteComplemento = repositoryPostulanteComplemento;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<PostulanteComplemento> postulanteComplementoList(){
 		return repositoryPostulanteComplemento.findAll();
 	}

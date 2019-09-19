@@ -23,12 +23,12 @@ public class ControllerSeccion {
 		this.repo = repo;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<Seccion> seccionList(){
 		return repo.findAll();
 	}
 	
-	@PostMapping(path = "/add")
+	@PostMapping(path = "/post")
 	public @ResponseBody Seccion insert(@RequestBody Seccion agr) {
 		repo.save(agr);
 		return agr;

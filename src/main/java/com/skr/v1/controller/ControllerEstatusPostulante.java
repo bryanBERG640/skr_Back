@@ -22,12 +22,12 @@ public class ControllerEstatusPostulante {
 		this.repo = repo;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/get")
 	public List<EstatusPostulante> estatusPostulanteList(){
 		return repo.findAll();
 	}
 	
-	@RequestMapping("/add")
+	@RequestMapping("/post")
 	public @ResponseBody EstatusPostulante insert(@RequestBody EstatusPostulante agr) {
 		repo.save(agr);
 		return agr;
