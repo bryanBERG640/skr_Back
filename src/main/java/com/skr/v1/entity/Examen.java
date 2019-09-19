@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name="examen")
-public class Examen {
+public class Examen { 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +46,7 @@ public class Examen {
 	@JsonIgnore
 	private Cita cita;
 	
-	@OneToMany(targetEntity = Seccion.class, mappedBy = "examen", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = Seccion.class, mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Seccion> seccion;
 
 	public Examen() {}
