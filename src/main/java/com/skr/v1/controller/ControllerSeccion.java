@@ -58,7 +58,7 @@ public class ControllerSeccion {
 		return repositorySeccion.save(seccion);
 	}
 	
-	@PutMapping("/{examen}/get/{id}")
+	@PutMapping("/{examen}/put/{id}")
     ResponseEntity<Seccion> updateSeccion(@PathVariable (value= "examen") int examen,
     											@Valid @RequestBody Seccion seccion) {
         log.info("Request to update group: {}", seccion);
