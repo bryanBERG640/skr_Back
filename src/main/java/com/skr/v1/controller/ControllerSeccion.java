@@ -58,9 +58,15 @@ public class ControllerSeccion {
 		return repositorySeccion.save(seccion);
 	}
 	
-	@PutMapping("/put/{id}")
-    ResponseEntity<Seccion> updateGroup(@Valid @RequestBody Seccion seccion) {
+	@PutMapping("/{examen}/get/{id}")
+    ResponseEntity<Seccion> updateSeccion(@PathVariable (value= "examen") int examen,
+    											@Valid @RequestBody Seccion seccion) {
         log.info("Request to update group: {}", seccion);
+        this.seccionN = seccion;
+        repositoryExamen.findById(examen).map(exam -> {
+        	this.seccionN.setExamen(exam);
+        	return this.seccionN;
+        });
         Seccion result = repositorySeccion.save(seccion);
         return ResponseEntity.ok().body(result);
     }
