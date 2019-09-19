@@ -1,37 +1,68 @@
 package com.skr.v1.controller;
 
-import java.util.List;
+import javax.validation.Valid;
+import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.skr.v1.entity.Seccion;
+import com.skr.v1.repository.RepositoryExamen;
 import com.skr.v1.repository.RepositorySeccion;
 
 @RestController
 @RequestMapping("/seccion")
 public class ControllerSeccion {
 	
-	private RepositorySeccion repo;
+	private final Logger log = LoggerFactory.getLogger(ControllerSeccion.class);	
+	
+	@Autowired
+	private RepositorySeccion repositorySeccion;
+	private Seccion seccionN;
+	
+	@Autowired
+	private RepositoryExamen repositoryExamen;
 
 	@Autowired
-	public ControllerSeccion(RepositorySeccion repo) {
-		this.repo = repo;
+	public ControllerSeccion(RepositorySeccion repositorySeccion) {
+		this.repositorySeccion = repositorySeccion;
 	}
 	
-	@RequestMapping("/get")
-	public List<Seccion> seccionList(){
-		return repo.findAll();
+	@GetMapping("/get")
+    Collection<Seccion> groups() {
+        return repositorySeccion.findAll();
+    }
+	
+	@GetMapping("/get/{id}")
+    ResponseEntity<?> getSeccion(@PathVariable int id) {
+        Optional<Seccion> seccion = repositorySeccion.findById(id);
+        return seccion.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }	
+	
+	@PostMapping("/{examen}/post")
+	public Seccion addSeccion(@PathVariable (value = "examen") int examen,
+									  @Valid @RequestBody Seccion seccion)
+	{
+		
+		this.seccionN = seccion;
+		repositoryExamen.findById(examen).map(exam ->{
+			this.seccionN.setExamen(exam);
+			return this.seccionN;
+		});
+		return repositorySeccion.save(seccion);
 	}
 	
-	@PostMapping(path = "/post")
-	public @ResponseBody Seccion insert(@RequestBody Seccion agr) {
-		repo.save(agr);
-		return agr;
-	}
+	@PutMapping("/put/{id}")
+    ResponseEntity<Seccion> updateGroup(@Valid @RequestBody Seccion seccion) {
+        log.info("Request to update group: {}", seccion);
+        Seccion result = repositorySeccion.save(seccion);
+        return ResponseEntity.ok().body(result);
+    }
 	
 }
