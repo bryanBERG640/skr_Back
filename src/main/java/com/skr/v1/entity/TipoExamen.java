@@ -3,15 +3,12 @@ package com.skr.v1.entity;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,10 +24,6 @@ public class TipoExamen {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
-	@OneToMany(targetEntity = Examen.class, mappedBy = "tipoexamen", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Examen> examen;
-	
 	public TipoExamen() {}
 
 	public TipoExamen(int id_tipo_examen, String examen_tipo, String descripcion, String usuario_actualiza,
@@ -41,7 +34,6 @@ public class TipoExamen {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.examen = id_examen;
 	}
 
 	public int getId_tipo_examen() {
@@ -84,14 +76,6 @@ public class TipoExamen {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<Examen> getId_examen() {
-		return examen;
-	}
-
-	public void setId_examen(Set<Examen> id_examen) {
-		this.examen = id_examen;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,7 +102,7 @@ public class TipoExamen {
 	public String toString() {
 		return "TipoExamen [id_tipo_examen=" + id_tipo_examen + ", examen_tipo=" + examen_tipo + ", descripcion="
 				+ descripcion + ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion="
-				+ fecha_actualizacion + ", id_examen=" + examen + "]";
+				+ fecha_actualizacion + "]";
 	}
 	
 }
