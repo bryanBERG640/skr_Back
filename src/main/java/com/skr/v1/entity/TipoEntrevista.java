@@ -2,15 +2,12 @@ package com.skr.v1.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,9 +22,6 @@ public class TipoEntrevista {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
-	@OneToMany(targetEntity = Entrevista.class, mappedBy = "tipoentrevista", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	private Set<Entrevista> entrevista;
-	
 	public TipoEntrevista() {}
 
 	public TipoEntrevista(int id_tipo_entrevista, String descripcion, String usuario_actualiza,
@@ -37,7 +31,6 @@ public class TipoEntrevista {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.entrevista = entrevista;
 	}
 
 	public int getId_tipo_entrevista() {
@@ -72,14 +65,6 @@ public class TipoEntrevista {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<Entrevista> getEntrevista() {
-		return entrevista;
-	}
-
-	public void setEntrevista(Set<Entrevista> entrevista) {
-		this.entrevista = entrevista;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -106,7 +91,7 @@ public class TipoEntrevista {
 	public String toString() {
 		return "TipoEntrevista [id_tipo_entrevista=" + id_tipo_entrevista + ", descripcion=" + descripcion
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
-				+ ", entrevista=" + entrevista + "]";
+				+ "]";
 	}
 
 }

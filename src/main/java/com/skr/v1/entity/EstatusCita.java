@@ -3,15 +3,12 @@ package com.skr.v1.entity;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,13 +22,8 @@ public class EstatusCita {
 	private String descripcion;
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
-	
-	@OneToMany(targetEntity = Cita.class, mappedBy = "estatuscita", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	private Set<Cita> cita;	
-	
-	
-	public EstatusCita() {}
 
+	public EstatusCita() {}
 
 	public EstatusCita(int id_estatus_cita, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
 			Set<Cita> cita) {
@@ -40,7 +32,6 @@ public class EstatusCita {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.cita = cita;
 	}
 
 
@@ -84,16 +75,6 @@ public class EstatusCita {
 	}
 
 
-	public Set<Cita> getCita() {
-		return cita;
-	}
-
-
-	public void setCita(Set<Cita> cita) {
-		this.cita = cita;
-	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,6 +103,6 @@ public class EstatusCita {
 	public String toString() {
 		return "EstatusCita [id_estatus_cita=" + id_estatus_cita + ", descripcion=" + descripcion
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
-				+ ", cita=" + cita + "]";
+				+"]";
 	}
 }
