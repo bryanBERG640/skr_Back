@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -73,5 +74,24 @@ public class ControllerCita {
         Optional<Cita> cita = repositoryCita.findById(id);
         return cita.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }	
+    }
+	
+	@PutMapping("/{estatusCita}/{postulanteB}/put/{id}")
+    ResponseEntity<Cita> updateCita(@PathVariable (value= "estatusCita") int estatusCita,
+    									@PathVariable (value= "postulanteB") int postulanteB,    									
+    									@Valid @RequestBody Cita cita) {
+		log.error("Request to update cita: {}", cita);
+        this.citA = cita;
+        repositoryEstatusCita.findById(estatusCita).map(cit ->{
+			this.citA.setEstatuscita(cit);
+			return this.citA;
+		});
+        respositoryPostulanteB.findById(postulanteB).map(tE ->{
+			this.citA.setPostulanteb(tE);
+			return this.citA;
+		});
+        Cita result = repositoryCita.save(cita);
+        return ResponseEntity.ok().body(result);
+    }
+	
 }
