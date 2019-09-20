@@ -65,13 +65,19 @@ public class PostulanteComplemento {
     @JoinColumn(name = "id_estatus_cv")
 	@JsonIgnore
 	private EstatusCV estatuscv;
+	
+	@ManyToOne
+    @JoinColumn(name = "id_estatus_aprovacion")
+	@JsonIgnore
+	private EstatusAprobacion estatusprobacion;
 
 	public PostulanteComplemento() {}
 
 	public PostulanteComplemento(int id_postulante_c, Date fecha_nacimiento, int edad, String curp, String rfc,
 			int pretencion_economica, String certificaciones, String tiempo_experiencia, int acuerdo_economico,
 			File foto_perfil, String usuario_actualiza, Date fecha_actualizacion, PostulanteB postulanteb,
-			Escuela escuela, EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv) {
+			Escuela escuela, EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv,
+			EstatusAprobacion estatusprobacion) {
 		super();
 		this.id_postulante_c = id_postulante_c;
 		this.fecha_nacimiento = fecha_nacimiento;
@@ -91,6 +97,7 @@ public class PostulanteComplemento {
 		this.carrera = carrera;
 		this.sexo = sexo;
 		this.estatuscv = estatuscv;
+		this.estatusprobacion = estatusprobacion;
 	}
 
 	public int getId_postulante_c() {
@@ -237,6 +244,14 @@ public class PostulanteComplemento {
 		this.estatuscv = estatuscv;
 	}
 
+	public EstatusAprobacion getEstatusprobacion() {
+		return estatusprobacion;
+	}
+
+	public void setEstatusprobacion(EstatusAprobacion estatusprobacion) {
+		this.estatusprobacion = estatusprobacion;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -257,7 +272,7 @@ public class PostulanteComplemento {
 		if (id_postulante_c != other.id_postulante_c)
 			return false;
 		return true;
-	} 
+	}
 
 	@Override
 	public String toString() {
@@ -267,6 +282,7 @@ public class PostulanteComplemento {
 				+ tiempo_experiencia + ", acuerdo_economico=" + acuerdo_economico + ", foto_perfil=" + foto_perfil
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
 				+ ", postulanteb=" + postulanteb + ", escuela=" + escuela + ", estatustitulacion=" + estatustitulacion
-				+ ", carrera=" + carrera + ", sexo=" + sexo + ", estatuscv=" + estatuscv + "]";
+				+ ", carrera=" + carrera + ", sexo=" + sexo + ", estatuscv=" + estatuscv + ", estatusprobacion="
+				+ estatusprobacion + "]";
 	}
 }

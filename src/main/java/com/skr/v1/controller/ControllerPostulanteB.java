@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//import com.skr.v1.entity.EstatusPostulante;
 import com.skr.v1.entity.PostulanteB;
 import com.skr.v1.repository.RepositoryEstatusPostulante;
 import com.skr.v1.repository.RepositoryPerfil;
 import com.skr.v1.repository.RepositoryPostulanteB;
-//import com.skr.v1.service.PostulanteBService;
 
 @RestController
 @RequestMapping("/postulanteB")
@@ -32,8 +30,6 @@ public class ControllerPostulanteB {
 	
 	@Autowired
 	private RepositoryPostulanteB repositoryPostulanteB;
-	//@Autowired
-	//private PostulanteBService postulanteBService;
 	@Autowired
 	private RepositoryPerfil repositoryPerfil;
 	@Autowired 
