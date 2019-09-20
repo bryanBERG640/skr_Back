@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skr.v1.entity.EstatusCV;
-import com.skr.v1.entity.Perfil;
 import com.skr.v1.repository.RepositoryEstatusCV;
 @RestController
 @RequestMapping("/estatusCV")

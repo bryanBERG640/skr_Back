@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skr.v1.entity.Cliente;
 import com.skr.v1.entity.EstatusPostulante;
-import com.skr.v1.entity.Seccion;
 import com.skr.v1.repository.RepositoryEstatusPostulante;
 
 @RestController
