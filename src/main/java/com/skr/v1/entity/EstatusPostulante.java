@@ -1,6 +1,5 @@
 package com.skr.v1.entity;
 
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +21,7 @@ public class EstatusPostulante {
 	public EstatusPostulante() {}
 
 	public EstatusPostulante(int id_estatus_postulante, String descripcion, String usuario_actualiza,
-			String fecha_actualizacion, Set<PostulanteB> postulanteb) {
+			String fecha_actualizacion) {
 		super();
 		this.id_estatus_postulante = id_estatus_postulante;
 		this.descripcion = descripcion;

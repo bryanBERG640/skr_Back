@@ -27,7 +27,6 @@ public class Entrevista {
 	
 	@ManyToOne
 	@JoinColumn(name="id_tipo_entrevista")
-	@JsonIgnore
 	private TipoEntrevista tipoentrevista;
 	
 	@ManyToOne
@@ -37,7 +36,6 @@ public class Entrevista {
 	
 	@ManyToOne
 	@JoinColumn(name="id_cliente")
-	@JsonIgnore
 	private Cliente cliente;
 	
 	public Entrevista() {}

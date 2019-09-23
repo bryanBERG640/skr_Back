@@ -33,12 +33,10 @@ public class Examen {
 	
 	@ManyToOne
 	@JoinColumn(name="id_tipo_examen")
-	@JsonIgnore
 	private TipoExamen tipoexamen;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
-	@JsonIgnore
 	private Cliente cliente;
 	
 	@ManyToOne

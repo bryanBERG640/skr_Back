@@ -2,15 +2,12 @@ package com.skr.v1.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +21,6 @@ public class Sexo {
 	private String descripcion;
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
-	
-	@OneToMany(targetEntity = PostulanteComplemento.class, mappedBy = "sexo", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	private Set<PostulanteComplemento> postulantecomplemento;
 
 	public Sexo() {}
 
@@ -37,7 +31,6 @@ public class Sexo {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.postulantecomplemento = postulantecomplemento;
 	}
 
 	public int getId_sexo() {
@@ -72,14 +65,6 @@ public class Sexo {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<PostulanteComplemento> getPostulantecomplemento() {
-		return postulantecomplemento;
-	}
-
-	public void setPostulantecomplemento(Set<PostulanteComplemento> postulantecomplemento) {
-		this.postulantecomplemento = postulantecomplemento;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,7 +90,6 @@ public class Sexo {
 	@Override
 	public String toString() {
 		return "Sexo [id_sexo=" + id_sexo + ", descripcion=" + descripcion + ", usuario_actualiza=" + usuario_actualiza
-				+ ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento=" + postulantecomplemento
-				+ "]";
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento=" +"]";
 	}
 }

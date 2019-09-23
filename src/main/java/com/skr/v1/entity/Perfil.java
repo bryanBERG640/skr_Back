@@ -1,7 +1,6 @@
 package com.skr.v1.entity;
 
 import java.sql.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +24,7 @@ public class Perfil {
 	
 	public Perfil() {}
 
-	public Perfil(int id_perfil, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
-			Set<PostulanteB> postulanteb) {
+	public Perfil(int id_perfil, String descripcion, String usuario_actualiza, Date fecha_actualizacion) {
 		super();
 		this.id_perfil = id_perfil;
 		this.descripcion = descripcion;

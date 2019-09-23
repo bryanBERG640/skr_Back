@@ -1,6 +1,5 @@
 package com.skr.v1.entity;
 
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +24,7 @@ public class TipoEntrevista {
 	public TipoEntrevista() {}
 
 	public TipoEntrevista(int id_tipo_entrevista, String descripcion, String usuario_actualiza,
-			String fecha_actualizacion, Set<Entrevista> entrevista) {
+			String fecha_actualizacion) {
 		super();
 		this.id_tipo_entrevista = id_tipo_entrevista;
 		this.descripcion = descripcion;

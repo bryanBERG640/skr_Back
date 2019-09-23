@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -43,32 +42,26 @@ public class PostulanteComplemento {
 	
 	@ManyToOne
     @JoinColumn(name = "id_escuela")
-	@JsonIgnore
 	private Escuela escuela;
 
 	@ManyToOne
     @JoinColumn(name = "id_estatus_titulacion")
-	@JsonIgnore
 	private EstatusTitulacion estatustitulacion;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_carrera")
-	@JsonIgnore
 	private Carrera carrera;
 	
 	@ManyToOne
     @JoinColumn(name = "id_sexo")
-	@JsonIgnore
 	private Sexo sexo;
 
 	@ManyToOne
     @JoinColumn(name = "id_estatus_cv")
-	@JsonIgnore
 	private EstatusCV estatuscv;
 	
 	@ManyToOne
     @JoinColumn(name = "id_estatus_aprobacion")
-	@JsonIgnore
 	private EstatusAprobacion estatusprobacion;
 
 	public PostulanteComplemento() {}
