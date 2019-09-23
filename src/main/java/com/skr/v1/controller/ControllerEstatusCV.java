@@ -45,7 +45,7 @@ public class ControllerEstatusCV {
 	@PostMapping(path = "/post")
 	public @ResponseBody EstatusCV insert(@RequestBody EstatusCV agregar) {
 		repositoryEstatusCV.save(agregar);
-		return agregar;
+		return agregar; 
 	}
 	
 	@PutMapping("/put/{id}")

@@ -83,7 +83,7 @@ public class ControllerPostulanteComplemento {
 		});
 		repositoryEscuela.findById(escuela).map(school ->{
 			this.postulanteComplemento.setEscuela(school);
-			return this.postulanteComplemento;
+			return this.postulanteComplemento; 
 		});
 		repositoryEstatusTitulacion.findById(titulacion).map(titulado ->{
 			this.postulanteComplemento.setEstatustitulacion(titulado);

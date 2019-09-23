@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skr.v1.entity.EstatusPostulante;
 import com.skr.v1.repository.RepositoryEstatusPostulante;
 
-@RestController
+@RestController 
 @RequestMapping("/estatusPostulante")
 public class ControllerEstatusPostulante {
 
