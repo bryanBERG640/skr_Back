@@ -67,7 +67,7 @@ public class PostulanteComplemento {
 	private EstatusCV estatuscv;
 	
 	@ManyToOne
-    @JoinColumn(name = "id_estatus_aprovacion")
+    @JoinColumn(name = "id_estatus_aprobacion")
 	@JsonIgnore
 	private EstatusAprobacion estatusprobacion;
 
