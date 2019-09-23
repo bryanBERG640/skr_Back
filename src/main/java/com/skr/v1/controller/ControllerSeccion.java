@@ -17,6 +17,7 @@ import com.skr.v1.repository.RepositorySeccion;
 
 @RestController
 @RequestMapping("/seccion")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT})
 public class ControllerSeccion {
 	
 	private final Logger log = LoggerFactory.getLogger(ControllerSeccion.class);	
