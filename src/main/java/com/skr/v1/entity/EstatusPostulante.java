@@ -2,13 +2,10 @@ package com.skr.v1.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +19,6 @@ public class EstatusPostulante {
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
-	@OneToMany(targetEntity = PostulanteB.class, mappedBy = "estatuspostulante", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	private Set<PostulanteB> postulanteb;	
-	
 	public EstatusPostulante() {}
 
 	public EstatusPostulante(int id_estatus_postulante, String descripcion, String usuario_actualiza,
@@ -34,7 +28,6 @@ public class EstatusPostulante {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.postulanteb = postulanteb;
 	}
 
 	public int getId_estatus_postulante() {
@@ -69,14 +62,6 @@ public class EstatusPostulante {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<PostulanteB> getPostulanteb() {
-		return postulanteb;
-	}
-
-	public void setPostulanteb(Set<PostulanteB> postulanteb) {
-		this.postulanteb = postulanteb;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -103,6 +88,6 @@ public class EstatusPostulante {
 	public String toString() {
 		return "EstatusPostulante [id_estatus_postulante=" + id_estatus_postulante + ", descripcion=" + descripcion
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
-				+ ", postulanteb=" + postulanteb + "]";
+				+ "]";
 	}
 }

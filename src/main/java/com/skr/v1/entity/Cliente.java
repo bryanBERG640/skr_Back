@@ -3,15 +3,12 @@ package com.skr.v1.entity;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,14 +22,6 @@ public class Cliente {
 	private String descripcion;
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
-	
-	@OneToMany(targetEntity = Examen.class, mappedBy = "cliente", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Examen> examen;
-	
-	@OneToMany(targetEntity = Entrevista.class, mappedBy = "cliente", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Entrevista> entrevista;
 		
 	public Cliente () {}
 
@@ -43,8 +32,6 @@ public class Cliente {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.examen = examen;
-		this.entrevista = entrevista;
 	}
 
 	public int getId_cliente() {
@@ -79,22 +66,6 @@ public class Cliente {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<Examen> getExamen() {
-		return examen;
-	}
-
-	public void setExamen(Set<Examen> examen) {
-		this.examen = examen;
-	}
-
-	public Set<Entrevista> getEntrevista() {
-		return entrevista;
-	}
-
-	public void setEntrevista(Set<Entrevista> entrevista) {
-		this.entrevista = entrevista;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -120,8 +91,8 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [id_cliente=" + id_cliente + ", descripcion=" + descripcion + ", usuario_actualiza="
-				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", examen=" + examen
-				+ ", entrevista=" + entrevista + "]";
+				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion 
+				+ "]";
 	}
 	
 }

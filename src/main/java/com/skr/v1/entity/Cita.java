@@ -2,11 +2,8 @@ package com.skr.v1.entity;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +11,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -45,19 +41,10 @@ public class Cita {
 	@JsonIgnore
 	private PostulanteB postulanteb;
 	
-	@OneToMany(targetEntity = Examen.class, mappedBy = "cita", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Examen> examen;
-	
-	@OneToMany(targetEntity = Entrevista.class, mappedBy = "cita", fetch = FetchType.LAZY,
-			cascade = CascadeType.ALL)
-	private Set<Entrevista> entrevista;
-	
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
-			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
-			Set<Examen> examen, Set<Entrevista> entrevista) {
+			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb) {
 		super();
 		this.id_cita = id_cita;
 		this.entrevistador = entrevistador;
@@ -68,8 +55,6 @@ public class Cita {
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.estatuscita = estatuscita;
 		this.postulanteb = postulanteb;
-		this.examen = examen;
-		this.entrevista = entrevista;
 	}
 
 	public int getId_cita() {
@@ -144,22 +129,6 @@ public class Cita {
 		this.postulanteb = postulanteb;
 	}
 
-	public Set<Examen> getExamen() {
-		return examen;
-	}
-
-	public void setExamen(Set<Examen> examen) {
-		this.examen = examen;
-	}
-
-	public Set<Entrevista> getEntrevista() {
-		return entrevista;
-	}
-
-	public void setEntrevista(Set<Entrevista> entrevista) {
-		this.entrevista = entrevista;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -187,6 +156,7 @@ public class Cita {
 		return "Cita [id_cita=" + id_cita + ", entrevistador=" + entrevistador + ", fecha=" + fecha + ", hora=" + hora
 				+ ", observaciones=" + observaciones + ", usuario_actualiza=" + usuario_actualiza
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuscita=" + estatuscita + ", postulanteb="
-				+ postulanteb + ", examen=" + examen + ", entrevista=" + entrevista + "]";
+				+ postulanteb + "]";
 	}
+	
 }

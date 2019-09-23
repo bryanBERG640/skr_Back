@@ -49,6 +49,7 @@ public class ControllerSeccion {
 	public Seccion addSeccion(@PathVariable (value = "examen") int examen,
 									  @Valid @RequestBody Seccion seccion)
 	{
+		log.info("Request to insert group: {}", seccion);
 		
 		this.seccionN = seccion;
 		repositoryExamen.findById(examen).map(exam ->{
