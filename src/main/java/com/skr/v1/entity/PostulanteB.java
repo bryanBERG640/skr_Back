@@ -47,16 +47,16 @@ public class PostulanteB {
 	@JoinColumn(name="id_perfil")
 	private Perfil perfil;
 	
-	/*@OneToMany(targetEntity = Cita.class, mappedBy = "postulanteb", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(targetEntity = Cita.class, mappedBy = "postulanteb", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private Set<Cita> cita;	
 	
 	@OneToOne(mappedBy = "postulanteb", cascade = CascadeType.ALL)
 	@JsonIgnore
-	private PostulanteComplemento postulanteComplemento;*/
+	private PostulanteComplemento postulanteComplemento;
 	
 	public PostulanteB() {}
 
-	public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
+	/*public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
 			String telefono, String correo, String observaciones, File cv, String usuario_actualiza,
 			String fecha_actualizacion, EstatusPostulante estatuspostulante, Perfil perfil) {
 		super();
@@ -208,11 +208,11 @@ public class PostulanteB {
 				+ ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza=" + usuario_actualiza
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuspostulante=" + estatuspostulante
 				+ ", perfil=" + perfil + "]";
-	}
+	}*/
 
 	
 
-	/*public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
+	public PostulanteB(int id_postulante_b, String nombre, String apellido1, String apellido2, String celular,
 			String telefono, String correo, String observaciones, File cv, String usuario_actualiza,
 			String fecha_actualizacion, EstatusPostulante estatuspostulante, Perfil perfil, Set<Cita> cita,
 			PostulanteComplemento postulanteComplemento) {
@@ -383,6 +383,6 @@ public class PostulanteB {
 				+ ", observaciones=" + observaciones + ", cv=" + cv + ", usuario_actualiza=" + usuario_actualiza
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuspostulante=" + estatuspostulante
 				+ ", perfil=" + perfil + ", cita=" + cita + ", postulanteComplemento=" + postulanteComplemento + "]";
-	}*/
+	}
 	
 }

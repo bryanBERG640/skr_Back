@@ -63,13 +63,13 @@ public class Cita {
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
-<<<<<<< HEAD
+//Modificacion con tabla empresa
 			String usuario_actualiza, Date fecha_actualizacion, Cliente cliente, Empresa empresa,
 			EstatusCita estatuscita, PostulanteB postulanteb) {
-=======
-			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
-			Set<Entrevista> seccion, Set<Entrevista> examen) {
->>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
+//original
+/*			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
+			Set<Entrevista> seccion, Set<Entrevista> examen) {*/
+
 		super();
 		this.id_cita = id_cita;
 		this.entrevistador = entrevistador;
@@ -83,7 +83,7 @@ public class Cita {
 		this.estatuscita = estatuscita;
 		this.postulanteb = postulanteb;
 		this.seccion = seccion;
-		Examen = examen;
+		//Examen = examen;
 	}
 
 	public int getId_cita() {
@@ -216,13 +216,15 @@ public class Cita {
 	public String toString() {
 		return "Cita [id_cita=" + id_cita + ", entrevistador=" + entrevistador + ", fecha=" + fecha + ", hora=" + hora
 				+ ", observaciones=" + observaciones + ", usuario_actualiza=" + usuario_actualiza
-<<<<<<< HEAD
+//modificacion con tabla empresa
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", cliente=" + cliente + ", empresa=" + empresa
 				+ ", estatuscita=" + estatuscita + ", postulanteb=" + postulanteb + "]";
-=======
+
+//original
+		/*
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuscita=" + estatuscita + ", postulanteb="
 				+ postulanteb + ", seccion=" + seccion + ", Examen=" + Examen + "]";
->>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
+*/
 	}
 
 	

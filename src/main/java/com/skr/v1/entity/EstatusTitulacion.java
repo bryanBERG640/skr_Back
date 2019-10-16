@@ -91,12 +91,13 @@ public class EstatusTitulacion {
 	@Override
 	public String toString() {
 		return "EstatusTitulacion [id_estatus_titulacion=" + id_estatus_titulacion + ", descripcion=" + descripcion
-<<<<<<< HEAD
+
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
-=======
+//original
+		/*
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
 				+ ", postulantecomplemento=" +"]";
->>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
+*/
 	}
 
 	
