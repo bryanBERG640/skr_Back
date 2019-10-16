@@ -23,7 +23,7 @@ public class EstatusAprobacion {
 	private Date fecha_actualizacion;
 	
 	public EstatusAprobacion() {}
-	
+
 	public EstatusAprobacion(int id_estatus_aprobacion, String descripcion, String usuario_actualiza,
 			Date fecha_actualizacion) {
 		super();
@@ -31,6 +31,7 @@ public class EstatusAprobacion {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+
 	}
 
 	public int getId_estatus_aprobacion() {
@@ -90,7 +91,8 @@ public class EstatusAprobacion {
 	@Override
 	public String toString() {
 		return "EstatusAprobacion [id_estatus_aprobacion=" + id_estatus_aprobacion + ", descripcion=" + descripcion
-				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
+				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
+				+ "]";
 	}
 
 }

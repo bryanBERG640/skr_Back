@@ -2,8 +2,11 @@ package com.skr.v1.entity;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,7 +47,6 @@ public class Cita {
 	
 	@ManyToOne
     @JoinColumn(name="id_estatus_cita")
-	@JsonIgnore
 	private EstatusCita estatuscita;
 	
 	@ManyToOne
@@ -51,11 +54,22 @@ public class Cita {
 	@JsonIgnore
 	private PostulanteB postulanteb;
 	
+	@OneToMany(targetEntity = Entrevista.class, mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Entrevista> seccion;
+	
+	@OneToMany(targetEntity = Examen.class, mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Entrevista> Examen;
+	
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
+<<<<<<< HEAD
 			String usuario_actualiza, Date fecha_actualizacion, Cliente cliente, Empresa empresa,
 			EstatusCita estatuscita, PostulanteB postulanteb) {
+=======
+			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
+			Set<Entrevista> seccion, Set<Entrevista> examen) {
+>>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
 		super();
 		this.id_cita = id_cita;
 		this.entrevistador = entrevistador;
@@ -68,6 +82,8 @@ public class Cita {
 		this.empresa = empresa;
 		this.estatuscita = estatuscita;
 		this.postulanteb = postulanteb;
+		this.seccion = seccion;
+		Examen = examen;
 	}
 
 	public int getId_cita() {
@@ -158,6 +174,22 @@ public class Cita {
 		this.postulanteb = postulanteb;
 	}
 
+	public Set<Entrevista> getSeccion() {
+		return seccion;
+	}
+
+	public void setSeccion(Set<Entrevista> seccion) {
+		this.seccion = seccion;
+	}
+
+	public Set<Entrevista> getExamen() {
+		return Examen;
+	}
+
+	public void setExamen(Set<Entrevista> examen) {
+		Examen = examen;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -184,8 +216,13 @@ public class Cita {
 	public String toString() {
 		return "Cita [id_cita=" + id_cita + ", entrevistador=" + entrevistador + ", fecha=" + fecha + ", hora=" + hora
 				+ ", observaciones=" + observaciones + ", usuario_actualiza=" + usuario_actualiza
+<<<<<<< HEAD
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", cliente=" + cliente + ", empresa=" + empresa
 				+ ", estatuscita=" + estatuscita + ", postulanteb=" + postulanteb + "]";
+=======
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuscita=" + estatuscita + ", postulanteb="
+				+ postulanteb + ", seccion=" + seccion + ", Examen=" + Examen + "]";
+>>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
 	}
 
 	

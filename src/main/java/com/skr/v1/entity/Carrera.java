@@ -3,15 +3,12 @@ package com.skr.v1.entity;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -28,9 +25,6 @@ public class Carrera {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
-	@OneToMany(targetEntity = PostulanteComplemento.class, mappedBy = "carrera", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	private Set<PostulanteComplemento> postulantecomplemento;
-	
 	public Carrera() {}
 
 	public Carrera(int id_carrera, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
@@ -40,7 +34,6 @@ public class Carrera {
 		this.descripcion = descripcion;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
-		this.postulantecomplemento = postulantecomplemento;
 	}
 
 	public int getId_carrera() {
@@ -75,14 +68,6 @@ public class Carrera {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
-	public Set<PostulanteComplemento> getPostulantecomplemento() {
-		return postulantecomplemento;
-	}
-
-	public void setPostulantecomplemento(Set<PostulanteComplemento> postulantecomplemento) {
-		this.postulantecomplemento = postulantecomplemento;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -109,6 +94,6 @@ public class Carrera {
 	public String toString() {
 		return "Carrera [id_carrera=" + id_carrera + ", descripcion=" + descripcion + ", usuario_actualiza="
 				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento="
-				+ postulantecomplemento + "]";
+				+ "]";
 	}
 }

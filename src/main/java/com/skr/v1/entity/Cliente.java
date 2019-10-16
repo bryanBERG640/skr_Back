@@ -1,7 +1,6 @@
 package com.skr.v1.entity;
 
 import java.sql.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +24,7 @@ public class Cliente {
 		
 	public Cliente () {}
 
-	public Cliente(int id_cliente, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
-			Set<Examen> examen, Set<Entrevista> entrevista) {
+	public Cliente(int id_cliente, String descripcion, String usuario_actualiza, Date fecha_actualizacion) {
 		super();
 		this.id_cliente = id_cliente;
 		this.descripcion = descripcion;

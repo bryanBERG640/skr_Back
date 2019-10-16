@@ -41,12 +41,10 @@ public class PostulanteB {
 	
 	@ManyToOne
 	@JoinColumn(name="id_estatus_postulante")
-	@JsonIgnore
 	private EstatusPostulante estatuspostulante;
 	
 	@ManyToOne
 	@JoinColumn(name="id_perfil")
-	@JsonIgnore
 	private Perfil perfil;
 	
 	/*@OneToMany(targetEntity = Cita.class, mappedBy = "postulanteb", fetch = FetchType.LAZY, cascade=CascadeType.ALL)

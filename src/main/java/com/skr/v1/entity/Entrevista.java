@@ -27,7 +27,6 @@ public class Entrevista {
 	
 	@ManyToOne
 	@JoinColumn(name="id_tipo_entrevista")
-	@JsonIgnore
 	private TipoEntrevista tipoentrevista;
 	
 	@ManyToOne
@@ -35,6 +34,13 @@ public class Entrevista {
 	@JsonIgnore
 	private Cita cita;
 	
+<<<<<<< HEAD
+=======
+	@ManyToOne
+	@JoinColumn(name="id_cliente")
+	private Cliente cliente;
+	
+>>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
 	public Entrevista() {}
 
 	public Entrevista(int id_entrevista, String observaciones, String entrevistador, String usuario_actualiza,

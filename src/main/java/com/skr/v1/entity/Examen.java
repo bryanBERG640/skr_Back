@@ -33,10 +33,16 @@ public class Examen {
 	
 	@ManyToOne
 	@JoinColumn(name="id_tipo_examen")
-	@JsonIgnore
 	private TipoExamen tipoexamen;
 	
 	@ManyToOne
+<<<<<<< HEAD
+=======
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
+	
+	@ManyToOne
+>>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
 	@JoinColumn(name = "id_cita")
 	@JsonIgnore
 	private Cita cita;

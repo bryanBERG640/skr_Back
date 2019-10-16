@@ -10,30 +10,29 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-//import com.skr.v1.entity.EstatusPostulante;
 import com.skr.v1.entity.PostulanteB;
 import com.skr.v1.repository.RepositoryEstatusPostulante;
 import com.skr.v1.repository.RepositoryPerfil;
 import com.skr.v1.repository.RepositoryPostulanteB;
-//import com.skr.v1.service.PostulanteBService;
 
 @RestController
 @RequestMapping("/postulanteB")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT})
 public class ControllerPostulanteB {
 	
 	private final Logger log = LoggerFactory.getLogger(ControllerSeccion.class);
 	
 	@Autowired
 	private RepositoryPostulanteB repositoryPostulanteB;
-	//@Autowired
-	//private PostulanteBService postulanteBService;
 	@Autowired
 	private RepositoryPerfil repositoryPerfil;
 	@Autowired 

@@ -2,15 +2,12 @@ package com.skr.v1.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -93,7 +90,12 @@ public class EstatusCV {
 	@Override
 	public String toString() {
 		return "EstatusCV [id_estatus_cv=" + id_estatus_cv + ", descripcion=" + descripcion + ", usuario_actualiza="
+<<<<<<< HEAD
 				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
+=======
+				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento="
+				+ "]";
+>>>>>>> 0e080edf92212f84b258246789981f8f7f4fa543
 	}
 
 	
