@@ -111,7 +111,7 @@ public class ControllerPostulanteComplemento {
 		return repositoryPostulanteComplemento.save(postulantecomplemento);
 	}
 	
-	@PutMapping(path="/{postulanteB}/{escuela}/{titulacion}/{carrera}/{sexo}/{cv}/{aprobacion}/post/{id}")
+	@PutMapping(path="/{postulanteB}/{escuela}/{titulacion}/{carrera}/{sexo}/{cv}/{aprobacion}/put/{id}")
 	ResponseEntity<PostulanteComplemento> updatePostulanteB(@PathVariable (value = "postulanteB") int postulanteB,
 									  @PathVariable (value = "escuela") int escuela,
 									  @PathVariable (value = "titulacion") int titulacion,

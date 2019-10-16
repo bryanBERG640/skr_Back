@@ -34,6 +34,16 @@ public class Cita {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
+	@ManyToOne
+	@JoinColumn(name="id_cliente")
+	@JsonIgnore
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name="id_empresa")
+	@JsonIgnore
+	private Empresa empresa;
+	
 	
 	@ManyToOne
     @JoinColumn(name="id_estatus_cita")
@@ -53,8 +63,13 @@ public class Cita {
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
-			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
-			Set<Entrevista> seccion, Set<Entrevista> examen) {
+//Modificacion con tabla empresa
+			String usuario_actualiza, Date fecha_actualizacion, Cliente cliente, Empresa empresa,
+			EstatusCita estatuscita, PostulanteB postulanteb) {
+//original
+/*			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
+			Set<Entrevista> seccion, Set<Entrevista> examen) {*/
+
 		super();
 		this.id_cita = id_cita;
 		this.entrevistador = entrevistador;
@@ -63,10 +78,12 @@ public class Cita {
 		this.observaciones = observaciones;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.cliente = cliente;
+		this.empresa = empresa;
 		this.estatuscita = estatuscita;
 		this.postulanteb = postulanteb;
 		this.seccion = seccion;
-		Examen = examen;
+		//Examen = examen;
 	}
 
 	public int getId_cita() {
@@ -123,6 +140,22 @@ public class Cita {
 
 	public void setFecha_actualizacion(Date fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public EstatusCita getEstatuscita() {
@@ -183,8 +216,15 @@ public class Cita {
 	public String toString() {
 		return "Cita [id_cita=" + id_cita + ", entrevistador=" + entrevistador + ", fecha=" + fecha + ", hora=" + hora
 				+ ", observaciones=" + observaciones + ", usuario_actualiza=" + usuario_actualiza
+//modificacion con tabla empresa
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", cliente=" + cliente + ", empresa=" + empresa
+				+ ", estatuscita=" + estatuscita + ", postulanteb=" + postulanteb + "]";
+
+//original
+		/*
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuscita=" + estatuscita + ", postulanteb="
 				+ postulanteb + ", seccion=" + seccion + ", Examen=" + Examen + "]";
+*/
 	}
 
 	

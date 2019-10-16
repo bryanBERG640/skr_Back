@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skr.v1.entity.Entrevista;
 import com.skr.v1.repository.RepositoryCita;
-import com.skr.v1.repository.RepositoryCliente;
 import com.skr.v1.repository.RepositoryEntrevista;
 import com.skr.v1.repository.RepositoryTipoEntrevista;
 
@@ -34,9 +33,6 @@ public class ControllerEntrevista {
 	
 	@Autowired
 	private RepositoryTipoEntrevista repositoryTipoEntrevista;
-	
-	@Autowired
-	private RepositoryCliente repositoryCliente;
 	
 	@Autowired
 	private RepositoryCita repositoryCita;
@@ -62,10 +58,9 @@ public class ControllerEntrevista {
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
-	@PostMapping(path="/{tipoentrevista}/{cita}/{cliente}/post")
+	@PostMapping(path="/{tipoentrevista}/{cita}/post")
 	public Entrevista addEntrevista(@PathVariable(value = "tipoentrevista") int tipoentrevista,
 			@PathVariable(value = "cita") int cita,
-			@PathVariable(value = "cliente") int cliente, 
 			@Valid @RequestBody Entrevista entrevista)
 	{
 		this.entrevistA=entrevista;
@@ -82,19 +77,13 @@ public class ControllerEntrevista {
 			return this.entrevistA;
 		});
 		
-		repositoryCliente.findById(cliente).map(client->
-		{
-			this.entrevistA.setCliente(client);
-			return this.entrevistA;
-		});
 		
 		return repositoryEntrevista.save(entrevista);
 	}
 	
-	@PutMapping("/{tipoentrevista}/{cita}/{cliente}/put/{id}")
+	@PutMapping("/{tipoentrevista}/{cita}/put/{id}")
 	ResponseEntity<Entrevista> updateEntrevista(@PathVariable(value = "tipoentrevista") int tipoentrevista,
-			@PathVariable(value = "cita") int cita,
-			@PathVariable(value = "cliente") int cliente, 
+			@PathVariable(value = "cita") int cita, 
 			@Valid @RequestBody Entrevista entrevista)
 	{
 		this.entrevistA=entrevista;
@@ -111,11 +100,6 @@ public class ControllerEntrevista {
 			return this.entrevistA;
 		});
 		
-		repositoryCliente.findById(cliente).map(client->
-		{
-			this.entrevistA.setCliente(client);
-			return this.entrevistA;
-		});
 		
 		Entrevista result=repositoryEntrevista.save(entrevista);
 		return ResponseEntity.ok().body(result);

@@ -26,7 +26,7 @@ public class EstatusTitulacion {
 	public EstatusTitulacion() {}
 
 	public EstatusTitulacion(int id_estatus_titulacion, String descripcion, String usuario_actualiza,
-			String fecha_actualizacion, Set<PostulanteComplemento> postulantecomplemento) {
+			String fecha_actualizacion) {
 		super();
 		this.id_estatus_titulacion = id_estatus_titulacion;
 		this.descripcion = descripcion;
@@ -91,7 +91,14 @@ public class EstatusTitulacion {
 	@Override
 	public String toString() {
 		return "EstatusTitulacion [id_estatus_titulacion=" + id_estatus_titulacion + ", descripcion=" + descripcion
+
+				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
+//original
+		/*
 				+ ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion
 				+ ", postulantecomplemento=" +"]";
+*/
 	}
+
+	
 }

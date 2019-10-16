@@ -36,10 +36,6 @@ public class Examen {
 	private TipoExamen tipoexamen;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_cliente")
-	private Cliente cliente;
-	
-	@ManyToOne
 	@JoinColumn(name = "id_cita")
 	@JsonIgnore
 	private Cita cita;
@@ -50,7 +46,7 @@ public class Examen {
 	public Examen() {}
 
 	public Examen(int id_examen, String calificacion_global, String observaciones, String entrevistador,
-			String usuario_actualiza, String fecha_actualizacion, TipoExamen tipoexamen, Cliente cliente, Cita cita,
+			String usuario_actualiza, String fecha_actualizacion, TipoExamen tipoexamen, Cita cita,
 			Set<Seccion> seccion) {
 		super();
 		this.id_examen = id_examen;
@@ -60,7 +56,6 @@ public class Examen {
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.tipoexamen = tipoexamen;
-		this.cliente = cliente;
 		this.cita = cita;
 		this.seccion = seccion;
 	}
@@ -121,14 +116,6 @@ public class Examen {
 		this.tipoexamen = tipoexamen;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public Cita getCita() {
 		return cita;
 	}
@@ -171,9 +158,8 @@ public class Examen {
 	public String toString() {
 		return "Examen [id_examen=" + id_examen + ", calificacion_global=" + calificacion_global + ", observaciones="
 				+ observaciones + ", entrevistador=" + entrevistador + ", usuario_actualiza=" + usuario_actualiza
-				+ ", fecha_actualizacion=" + fecha_actualizacion + ", tipoexamen=" + tipoexamen + ", cliente=" + cliente
-				+ ", cita=" + cita + ", seccion=" + seccion + "]";
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", tipoexamen=" + tipoexamen + ", cita=" + cita
+				+ ", seccion=" + seccion + "]";
 	}
-
 	
 }

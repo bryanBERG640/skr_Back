@@ -25,8 +25,7 @@ public class EstatusCV {
 	
 	public EstatusCV() {}
 
-	public EstatusCV(int id_estatus_cv, String descripcion, String usuario_actualiza, String fecha_actualizacion,
-			Set<PostulanteComplemento> postulantecomplemento) {
+	public EstatusCV(int id_estatus_cv, String descripcion, String usuario_actualiza, String fecha_actualizacion) {
 		super();
 		this.id_estatus_cv = id_estatus_cv;
 		this.descripcion = descripcion;
@@ -91,7 +90,12 @@ public class EstatusCV {
 	@Override
 	public String toString() {
 		return "EstatusCV [id_estatus_cv=" + id_estatus_cv + ", descripcion=" + descripcion + ", usuario_actualiza="
-				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento="
+				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + "]";
+//original
+			/*	+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", postulantecomplemento="
 				+ "]";
+*/
 	}
+
+	
 }

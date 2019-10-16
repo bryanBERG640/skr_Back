@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skr.v1.entity.Examen;
 import com.skr.v1.repository.RepositoryCita;
-import com.skr.v1.repository.RepositoryCliente;
 import com.skr.v1.repository.RepositoryExamen;
 import com.skr.v1.repository.RepositoryTipoExamen;
 
@@ -34,10 +33,6 @@ public class ControllerExamen {
 	@Autowired
 	private RepositoryExamen repositoryExamen;
 	private Examen exameN;
-	
-	//FK Cliente
-	@Autowired 
-	private RepositoryCliente repositoryCliente;
 	
 	//FK Cita
 	@Autowired
@@ -66,10 +61,9 @@ public class ControllerExamen {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }	
 	
-	@PostMapping("/{cita}/{tipoExamen}/{cliente}/post")
+	@PostMapping("/{cita}/{tipoExamen}/post")
 	public Examen addExamen(@PathVariable (value = "cita") int cita,
 								@PathVariable (value = "tipoExamen") int tipoExamen,
-								@PathVariable (value = "cliente") int cliente,
 									  @Valid @RequestBody Examen examen)
 	{
 		
@@ -82,17 +76,13 @@ public class ControllerExamen {
 			this.exameN.setTipoexamen(tE);
 			return this.exameN;
 		});
-		repositoryCliente.findById(cliente).map(client ->{
-			this.exameN.setCliente(client);
-			return this.exameN;
-		});
+
 		return repositoryExamen.save(examen);
 	}
 	
-	@PutMapping("/{cita}/{tipoExamen}/{cliente}/put/{id}")
+	@PutMapping("/{cita}/{tipoExamen}/put/{id}")
     ResponseEntity<Examen> updateExamen(@PathVariable (value= "cita") int cita,
     											  @PathVariable (value= "tipoExamen") int tipoExamen,
-    											  @PathVariable (value = "cliente") int cliente,
     											  @Valid @RequestBody Examen examen) {
         this.exameN = examen;
         repositoryCita.findById(cita).map(cit ->{
@@ -103,10 +93,7 @@ public class ControllerExamen {
 			this.exameN.setTipoexamen(tE);
 			return this.exameN;
 		});
-		repositoryCliente.findById(cliente).map(client ->{
-			this.exameN.setCliente(client);
-			return this.exameN;
-		});
+
         Examen result = repositoryExamen.save(examen);
         return ResponseEntity.ok().body(result);
     }

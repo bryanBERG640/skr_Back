@@ -22,8 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skr.v1.entity.Cita;
 import com.skr.v1.repository.RepositoryCita;
+import com.skr.v1.repository.RepositoryCliente;
+import com.skr.v1.repository.RepositoryEmpresa;
 import com.skr.v1.repository.RepositoryEstatusCita;
 import com.skr.v1.repository.RepositoryPostulanteB;
+
 
 @RestController
 @RequestMapping("/cita")
@@ -46,6 +49,12 @@ public class ControllerCita {
 	private RepositoryPostulanteB respositoryPostulanteB;
 	
 	@Autowired
+	private RepositoryEmpresa repositoryEmpresa;
+	
+	@Autowired
+	private RepositoryCliente repositoryCliente;
+	
+	@Autowired
 	public ControllerCita(RepositoryCita repositoryCita) {
 		this.repositoryCita = repositoryCita;
 	}
@@ -55,20 +64,37 @@ public class ControllerCita {
 		return repositoryCita.findAll();
 	}
 	
-	@PostMapping("/{estatusCita}/{postulanteB}/post")
+	@PostMapping("/{estatusCita}/{postulanteB}/{empresa}/{cliente}/post")
 	public Cita addCita(@PathVariable (value = "estatusCita") int estatusCita,
 								@PathVariable (value = "postulanteB") int postulanteB,
+								@PathVariable(value="empresa") int empresa,
+								@PathVariable (value="cliente") int cliente,
 									  @Valid @RequestBody Cita cita) {
 		log.error("Request to insert cita: {}", cita);
-		this.citA = cita;		
+		this.citA = cita;	
+		
 		repositoryEstatusCita.findById(estatusCita).map(eCit ->{
 			this.citA.setEstatuscita(eCit);
 			return this.citA;
 		});
+		
 		respositoryPostulanteB.findById(postulanteB).map(pB ->{
 			this.citA.setPostulanteb(pB);
 			return this.citA;
 		});
+		
+		repositoryEmpresa.findById(empresa).map(emp ->
+		{
+			this.citA.setEmpresa(emp);
+			return this.citA;
+		});
+		
+		repositoryCliente.findById(cliente).map(cl ->
+		{
+			this.citA.setCliente(cl);
+			return this.citA;
+		});
+		
 		return repositoryCita.save(cita);
 	}
 	
@@ -79,9 +105,11 @@ public class ControllerCita {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 	
-	@PutMapping("/{estatusCita}/{postulanteB}/put/{id}")
+	@PutMapping("/{estatusCita}/{postulanteB}/{empresa}/{cliente}/put/{id}")
     ResponseEntity<Cita> updateCita(@PathVariable (value= "estatusCita") int estatusCita,
-    									@PathVariable (value= "postulanteB") int postulanteB,    									
+    									@PathVariable (value= "postulanteB") int postulanteB,
+    									@PathVariable(value="empresa") int empresa,
+    									@PathVariable(value ="cliente") int cliente,
     									@Valid @RequestBody Cita cita) {
 		log.error("Request to update cita: {}", cita);
         this.citA = cita;
@@ -93,6 +121,19 @@ public class ControllerCita {
 			this.citA.setPostulanteb(tE);
 			return this.citA;
 		});
+        
+        repositoryEmpresa.findById(empresa).map(emp ->
+		{
+			this.citA.setEmpresa(emp);
+			return this.citA;
+		});
+        
+        repositoryCliente.findById(cliente).map(cl ->
+		{
+			this.citA.setCliente(cl);
+			return this.citA;
+		});
+        
         Cita result = repositoryCita.save(cita);
         return ResponseEntity.ok().body(result);
     }
