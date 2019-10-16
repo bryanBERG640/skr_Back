@@ -19,4 +19,9 @@ private RepositoryCita repositoryCita;
 	public List<Cita> citaList(){
 		return repositoryCita.findAll();
 	}
+	
+	@Autowired
+	public List<Cita> findByFecha(String fecha) {
+		return repositoryCita.findByFecha(fecha);
+	}
 }
