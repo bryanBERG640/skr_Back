@@ -35,15 +35,10 @@ public class Entrevista {
 	@JsonIgnore
 	private Cita cita;
 	
-	@ManyToOne
-	@JoinColumn(name="id_cliente")
-	@JsonIgnore
-	private Cliente cliente;
-	
 	public Entrevista() {}
 
 	public Entrevista(int id_entrevista, String observaciones, String entrevistador, String usuario_actualiza,
-			String fecha_actualizacion, TipoEntrevista tipoentrevista, Cita cita, Cliente cliente) {
+			String fecha_actualizacion, TipoEntrevista tipoentrevista, Cita cita) {
 		super();
 		this.id_entrevista = id_entrevista;
 		this.observaciones = observaciones;
@@ -52,7 +47,6 @@ public class Entrevista {
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.tipoentrevista = tipoentrevista;
 		this.cita = cita;
-		this.cliente = cliente;
 	}
 
 	public int getId_entrevista() {
@@ -111,14 +105,6 @@ public class Entrevista {
 		this.cita = cita;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,8 +131,7 @@ public class Entrevista {
 	public String toString() {
 		return "Entrevista [id_entrevista=" + id_entrevista + ", observaciones=" + observaciones + ", entrevistador="
 				+ entrevistador + ", usuario_actualiza=" + usuario_actualiza + ", fecha_actualizacion="
-				+ fecha_actualizacion + ", tipoentrevista=" + tipoentrevista + ", cita=" + cita + ", cliente=" + cliente
-				+ "]";
+				+ fecha_actualizacion + ", tipoentrevista=" + tipoentrevista + ", cita=" + cita + "]";
 	}
 
 }

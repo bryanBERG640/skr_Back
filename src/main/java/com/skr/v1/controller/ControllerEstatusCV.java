@@ -22,7 +22,7 @@ public class ControllerEstatusCV {
 		this.repositoryEstatusCV = repositoryEstatusCV;
 	}
 	
-	@RequestMapping("/list")
+	@RequestMapping("/get")
 	public List<EstatusCV> estatusCVList(){
 		return repositoryEstatusCV.findAll();
 	}

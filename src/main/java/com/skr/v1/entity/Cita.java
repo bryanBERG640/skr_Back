@@ -30,6 +30,16 @@ public class Cita {
 	private String usuario_actualiza;
 	private Date fecha_actualizacion;
 	
+	@ManyToOne
+	@JoinColumn(name="id_cliente")
+	@JsonIgnore
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name="id_empresa")
+	@JsonIgnore
+	private Empresa empresa;
+	
 	
 	@ManyToOne
     @JoinColumn(name="id_estatus_cita")
@@ -44,7 +54,8 @@ public class Cita {
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
-			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb) {
+			String usuario_actualiza, Date fecha_actualizacion, Cliente cliente, Empresa empresa,
+			EstatusCita estatuscita, PostulanteB postulanteb) {
 		super();
 		this.id_cita = id_cita;
 		this.entrevistador = entrevistador;
@@ -53,6 +64,8 @@ public class Cita {
 		this.observaciones = observaciones;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
+		this.cliente = cliente;
+		this.empresa = empresa;
 		this.estatuscita = estatuscita;
 		this.postulanteb = postulanteb;
 	}
@@ -113,6 +126,22 @@ public class Cita {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 	public EstatusCita getEstatuscita() {
 		return estatuscita;
 	}
@@ -155,8 +184,9 @@ public class Cita {
 	public String toString() {
 		return "Cita [id_cita=" + id_cita + ", entrevistador=" + entrevistador + ", fecha=" + fecha + ", hora=" + hora
 				+ ", observaciones=" + observaciones + ", usuario_actualiza=" + usuario_actualiza
-				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuscita=" + estatuscita + ", postulanteb="
-				+ postulanteb + "]";
+				+ ", fecha_actualizacion=" + fecha_actualizacion + ", cliente=" + cliente + ", empresa=" + empresa
+				+ ", estatuscita=" + estatuscita + ", postulanteb=" + postulanteb + "]";
 	}
+
 	
 }
