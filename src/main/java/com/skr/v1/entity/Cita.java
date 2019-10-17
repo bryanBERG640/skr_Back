@@ -36,12 +36,10 @@ public class Cita {
 	
 	@ManyToOne
 	@JoinColumn(name="id_cliente")
-	@JsonIgnore
 	private Cliente cliente;
 	
 	@ManyToOne
 	@JoinColumn(name="id_empresa")
-	@JsonIgnore
 	private Empresa empresa;
 	
 	
