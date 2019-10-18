@@ -53,7 +53,7 @@ public class Cita {
 	private PostulanteB postulanteb;
 	
 	@OneToMany(targetEntity = Entrevista.class, mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Entrevista> seccion;
+	private Set<Entrevista> Entrevista;
 	
 	@OneToMany(targetEntity = Examen.class, mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Entrevista> Examen;
@@ -61,13 +61,9 @@ public class Cita {
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
-//Modificacion con tabla empresa
 			String usuario_actualiza, Date fecha_actualizacion, Cliente cliente, Empresa empresa,
-			EstatusCita estatuscita, PostulanteB postulanteb) {
-//original
-/*			String usuario_actualiza, Date fecha_actualizacion, EstatusCita estatuscita, PostulanteB postulanteb,
-			Set<Entrevista> seccion, Set<Entrevista> examen) {*/
-
+			EstatusCita estatuscita, PostulanteB postulanteb, Set<com.skr.v1.entity.Entrevista> entrevista,
+			Set<com.skr.v1.entity.Entrevista> examen) {
 		super();
 		this.id_cita = id_cita;
 		this.entrevistador = entrevistador;
@@ -80,8 +76,8 @@ public class Cita {
 		this.empresa = empresa;
 		this.estatuscita = estatuscita;
 		this.postulanteb = postulanteb;
-		this.seccion = seccion;
-		//Examen = examen;
+		Entrevista = entrevista;
+		Examen = examen;
 	}
 
 	public int getId_cita() {
@@ -172,12 +168,12 @@ public class Cita {
 		this.postulanteb = postulanteb;
 	}
 
-	public Set<Entrevista> getSeccion() {
-		return seccion;
+	public Set<Entrevista> getEntrevista() {
+		return Entrevista;
 	}
 
-	public void setSeccion(Set<Entrevista> seccion) {
-		this.seccion = seccion;
+	public void setEntrevista(Set<Entrevista> entrevista) {
+		Entrevista = entrevista;
 	}
 
 	public Set<Entrevista> getExamen() {
@@ -214,16 +210,10 @@ public class Cita {
 	public String toString() {
 		return "Cita [id_cita=" + id_cita + ", entrevistador=" + entrevistador + ", fecha=" + fecha + ", hora=" + hora
 				+ ", observaciones=" + observaciones + ", usuario_actualiza=" + usuario_actualiza
-//modificacion con tabla empresa
 				+ ", fecha_actualizacion=" + fecha_actualizacion + ", cliente=" + cliente + ", empresa=" + empresa
-				+ ", estatuscita=" + estatuscita + ", postulanteb=" + postulanteb + "]";
-
-//original
-		/*
-				+ ", fecha_actualizacion=" + fecha_actualizacion + ", estatuscita=" + estatuscita + ", postulanteb="
-				+ postulanteb + ", seccion=" + seccion + ", Examen=" + Examen + "]";
-*/
+				+ ", estatuscita=" + estatuscita + ", postulanteb=" + postulanteb + ", Entrevista=" + Entrevista
+				+ ", Examen=" + Examen + "]";
 	}
 
-	
+		
 }
