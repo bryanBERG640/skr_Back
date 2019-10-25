@@ -1,6 +1,5 @@
 package com.skr.v1.entity;
 
-import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -21,11 +20,11 @@ public class Escuela {
 	private int id_escuela;
 	private String descripcion;
 	private String usuario_actualiza;
-	private Date fecha_actualizacion;
+	private String fecha_actualizacion;
 	
 	public Escuela() {}
 
-	public Escuela(int id_escuela, String descripcion, String usuario_actualiza, Date fecha_actualizacion,
+	public Escuela(int id_escuela, String descripcion, String usuario_actualiza, String fecha_actualizacion,
 			Set<PostulanteComplemento> postulantecomplemento) {
 		super();
 		this.id_escuela = id_escuela;
@@ -58,11 +57,11 @@ public class Escuela {
 		this.usuario_actualiza = usuario_actualiza;
 	}
 
-	public Date getFecha_actualizacion() {
+	public String getFecha_actualizacion() {
 		return fecha_actualizacion;
 	}
 
-	public void setFecha_actualizacion(Date fecha_actualizacion) {
+	public void setFecha_actualizacion(String fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 

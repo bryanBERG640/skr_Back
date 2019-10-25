@@ -1,7 +1,5 @@
 package com.skr.v1.entity;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +18,11 @@ public class Empresa {
 	private int id_empresa;
 	private String descripcion;
 	private String usuario_actualiza;
-	private Date fecha_actualizacion;
+	private String fecha_actualizacion;
 	
 	public Empresa() {}
 
-	public Empresa(int id_empresa, String descripcion, String usuario_actualiza, Date fecha_actualizacion) {
+	public Empresa(int id_empresa, String descripcion, String usuario_actualiza, String fecha_actualizacion) {
 		super();
 		this.id_empresa = id_empresa;
 		this.descripcion = descripcion;
@@ -56,11 +54,11 @@ public class Empresa {
 		this.usuario_actualiza = usuario_actualiza;
 	}
 
-	public Date getFecha_actualizacion() {
+	public String getFecha_actualizacion() {
 		return fecha_actualizacion;
 	}
 
-	public void setFecha_actualizacion(Date fecha_actualizacion) {
+	public void setFecha_actualizacion(String fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 

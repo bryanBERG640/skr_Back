@@ -123,6 +123,7 @@ public class ControllerPostulanteComplemento {
 	{
 		
 		this.postulanteComplemento = postulantecomplemento;
+		System.err.println("Valor de la fecha entrada: " + postulantecomplemento.getFecha_nacimiento());
 		repositoryPostulanteB.findById(postulanteB).map(postulante ->{
 			this.postulanteComplemento.setPostulanteb(postulante);
 			return this.postulanteComplemento;

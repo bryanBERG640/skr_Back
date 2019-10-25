@@ -1,7 +1,6 @@
 package com.skr.v1.entity;
 
 import java.io.File;
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "postulante_c")
@@ -23,7 +21,7 @@ public class PostulanteComplemento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_postulante_c;
-	private Date fecha_nacimiento;
+	private String fecha_nacimiento;
 	private int edad;
 	private String curp;
 	private String rfc;
@@ -33,7 +31,7 @@ public class PostulanteComplemento {
 	private int acuerdo_economico;
 	private File foto_perfil;
 	private String usuario_actualiza;
-	private Date fecha_actualizacion;
+	private String fecha_actualizacion;
 	
 	
 	@OneToOne
@@ -66,9 +64,9 @@ public class PostulanteComplemento {
 
 	public PostulanteComplemento() {}
 
-	public PostulanteComplemento(int id_postulante_c, Date fecha_nacimiento, int edad, String curp, String rfc,
+	public PostulanteComplemento(int id_postulante_c, String fecha_nacimiento, int edad, String curp, String rfc,
 			int pretencion_economica, String certificaciones, String tiempo_experiencia, int acuerdo_economico,
-			File foto_perfil, String usuario_actualiza, Date fecha_actualizacion, PostulanteB postulanteb,
+			File foto_perfil, String usuario_actualiza, String fecha_actualizacion, PostulanteB postulanteb,
 			Escuela escuela, EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv,
 			EstatusAprobacion estatusprobacion) {
 		super();
@@ -101,11 +99,15 @@ public class PostulanteComplemento {
 		this.id_postulante_c = id_postulante_c;
 	}
 
-	public Date getFecha_nacimiento() {
+	public String getFecha_nacimiento() {
+		
+//		SimpleDateFormat dt1 = new SimpleDateFormat("yyyyy-mm-dd");
+//		System.err.println(dt1.format(this.fecha_nacimiento));
+	
 		return fecha_nacimiento;
 	}
 
-	public void setFecha_nacimiento(Date fecha_nacimiento) {
+	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
@@ -181,11 +183,11 @@ public class PostulanteComplemento {
 		this.usuario_actualiza = usuario_actualiza;
 	}
 
-	public Date getFecha_actualizacion() {
+	public String getFecha_actualizacion() {
 		return fecha_actualizacion;
 	}
 
-	public void setFecha_actualizacion(Date fecha_actualizacion) {
+	public void setFecha_actualizacion(String fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 

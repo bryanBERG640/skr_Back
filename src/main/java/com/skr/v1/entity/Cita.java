@@ -1,6 +1,5 @@
 package com.skr.v1.entity;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.util.Set;
 
@@ -32,7 +31,7 @@ public class Cita {
 	private Time hora;
 	private String observaciones;
 	private String usuario_actualiza;
-	private Date fecha_actualizacion;
+	private String fecha_actualizacion;
 	
 	@ManyToOne
 	@JoinColumn(name="id_cliente")
@@ -61,7 +60,7 @@ public class Cita {
 	public Cita () {}
 
 	public Cita(int id_cita, String entrevistador, String fecha, Time hora, String observaciones,
-			String usuario_actualiza, Date fecha_actualizacion, Cliente cliente, Empresa empresa,
+			String usuario_actualiza, String fecha_actualizacion, Cliente cliente, Empresa empresa,
 			EstatusCita estatuscita, PostulanteB postulanteb, Set<com.skr.v1.entity.Entrevista> entrevista,
 			Set<com.skr.v1.entity.Entrevista> examen) {
 		super();
@@ -128,11 +127,11 @@ public class Cita {
 		this.usuario_actualiza = usuario_actualiza;
 	}
 
-	public Date getFecha_actualizacion() {
+	public String getFecha_actualizacion() {
 		return fecha_actualizacion;
 	}
 
-	public void setFecha_actualizacion(Date fecha_actualizacion) {
+	public void setFecha_actualizacion(String fecha_actualizacion) {
 		this.fecha_actualizacion = fecha_actualizacion;
 	}
 
