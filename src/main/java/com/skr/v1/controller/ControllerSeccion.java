@@ -74,9 +74,10 @@ public class ControllerSeccion {
     }
 	
 	@DeleteMapping("/delete/{id}")
-	void eliminar(@PathVariable int id)
+	public ResponseEntity<Seccion> eliminar(@PathVariable int id)
 	{
 		repositorySeccion.deleteById(id);
+		return ResponseEntity.noContent().build();
 	}
 	
 }
