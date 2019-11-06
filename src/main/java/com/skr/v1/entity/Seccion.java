@@ -21,8 +21,8 @@ public class Seccion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_seccion;
 	private int no_seccion;
-	private int puntaje;
-	private int calificacion;
+	private float puntaje;
+	private float calificacion;
 	private String observaciones;
 	private String usuario_actualiza;
 	private String fecha_actualizacion;	
@@ -34,7 +34,7 @@ public class Seccion {
 	
 	public Seccion() {}
 
-	public Seccion(int id_seccion, int no_seccion, int puntaje, int calificacion, String observaciones,
+	public Seccion(int id_seccion, int no_seccion, float puntaje, float calificacion, String observaciones,
 			String usuario_actualiza, String fecha_actualizacion, Examen examen) {
 		super();
 		this.id_seccion = id_seccion;
@@ -63,19 +63,19 @@ public class Seccion {
 		this.no_seccion = no_seccion;
 	}
 
-	public int getPuntaje() {
+	public float getPuntaje() {
 		return puntaje;
 	}
 
-	public void setPuntaje(int puntaje) {
+	public void setPuntaje(float puntaje) {
 		this.puntaje = puntaje;
 	}
 
-	public int getCalificacion() {
+	public float getCalificacion() {
 		return calificacion;
 	}
 
-	public void setCalificacion(int calificacion) {
+	public void setCalificacion(float calificacion) {
 		this.calificacion = calificacion;
 	}
 
