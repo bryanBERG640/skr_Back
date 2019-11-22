@@ -29,7 +29,7 @@ public class PostulanteComplemento {
 	private String certificaciones;
 	private String tiempo_experiencia;
 	private int acuerdo_economico;
-	private File foto_perfil;
+	private String foto_perfil;
 	private String usuario_actualiza;
 	private String fecha_actualizacion;
 	
@@ -66,7 +66,7 @@ public class PostulanteComplemento {
 
 	public PostulanteComplemento(int id_postulante_c, String fecha_nacimiento, int edad, String curp, String rfc,
 			int pretencion_economica, String certificaciones, String tiempo_experiencia, int acuerdo_economico,
-			File foto_perfil, String usuario_actualiza, String fecha_actualizacion, PostulanteB postulanteb,
+			String foto_perfil, String usuario_actualiza, String fecha_actualizacion, PostulanteB postulanteb,
 			Escuela escuela, EstatusTitulacion estatustitulacion, Carrera carrera, Sexo sexo, EstatusCV estatuscv,
 			EstatusAprobacion estatusprobacion) {
 		super();
@@ -167,11 +167,11 @@ public class PostulanteComplemento {
 		this.acuerdo_economico = acuerdo_economico;
 	}
 
-	public File getFoto_perfil() {
+	public String getFoto_perfil() {
 		return foto_perfil;
 	}
 
-	public void setFoto_perfil(File foto_perfil) {
+	public void setFoto_perfil(String foto_perfil) {
 		this.foto_perfil = foto_perfil;
 	}
 
