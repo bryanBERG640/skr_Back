@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skr.v1.entity.Usuario;
@@ -51,12 +52,11 @@ public class ControllerUsuario {
 		return repositoryUser.findAll();
 	}
 	
-	@GetMapping("/get/{id}")
-	ResponseEntity<?> getUsuario(@PathVariable int id)
+	@GetMapping("/get/{usuario}")
+	@ResponseBody Usuario getUsuario(@PathVariable String usuario)
 	{
-		Optional<Usuario> user= repositoryUser.findById(id);
-		return user.map(response -> ResponseEntity.ok().body(response))
-				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+		Usuario user= repositoryUser.findByUsuario(usuario);
+		return user;
 	}
 	
 	@PostMapping("/{rol}/post")

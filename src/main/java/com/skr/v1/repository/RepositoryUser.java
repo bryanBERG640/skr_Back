@@ -9,4 +9,6 @@ import com.skr.v1.entity.Usuario;
 public interface RepositoryUser  extends JpaRepository<Usuario, Integer>{
 
 	Usuario findByUsuario(String usuario);
+	
+	Usuario deleteByUsuario(String usuario);
 }
