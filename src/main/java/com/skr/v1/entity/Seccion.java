@@ -23,7 +23,6 @@ public class Seccion {
 	private int no_seccion;
 	private float puntaje;
 	private float calificacion;
-	private String observaciones;
 	private String usuario_actualiza;
 	private String fecha_actualizacion;	
 	
@@ -34,14 +33,13 @@ public class Seccion {
 	
 	public Seccion() {}
 
-	public Seccion(int id_seccion, int no_seccion, float puntaje, float calificacion, String observaciones,
+	public Seccion(int id_seccion, int no_seccion, float puntaje, float calificacion,
 			String usuario_actualiza, String fecha_actualizacion, Examen examen) {
 		super();
 		this.id_seccion = id_seccion;
 		this.no_seccion = no_seccion;
 		this.puntaje = puntaje;
 		this.calificacion = calificacion;
-		this.observaciones = observaciones;
 		this.usuario_actualiza = usuario_actualiza;
 		this.fecha_actualizacion = fecha_actualizacion;
 		this.examen = examen;
@@ -77,14 +75,6 @@ public class Seccion {
 
 	public void setCalificacion(float calificacion) {
 		this.calificacion = calificacion;
-	}
-
-	public String getObservaciones() {
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
 	}
 
 	public String getUsuario_actualiza() {
@@ -136,7 +126,7 @@ public class Seccion {
 	@Override
 	public String toString() {
 		return "Seccion [id_seccion=" + id_seccion + ", no_seccion=" + no_seccion + ", puntaje=" + puntaje
-				+ ", calificacion=" + calificacion + ", observaciones=" + observaciones + ", usuario_actualiza="
+				+ ", calificacion=" + calificacion  + ", usuario_actualiza="
 				+ usuario_actualiza + ", fecha_actualizacion=" + fecha_actualizacion + ", examen=" + examen + "]";
 	}
 	
